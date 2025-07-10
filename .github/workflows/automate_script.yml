@@ -1,0 +1,41 @@
+name: Generate and Commit File
+
+on:
+  schedule:
+    # Runs every 30 minutes
+    # For more cron examples, see https://crontab.guru/
+    - cron: '*/30 * * * *'
+  # Allows you to manually trigger the workflow from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write # This is crucial for committing changes back to the repo
+
+    steps:
+      - name: Checkout repository content
+        uses: actions/checkout@v4 # Use v4 or later for better compatibility
+
+      - name: Set up Python
+        uses: actions/setup-python@v5 # Use v5 or later
+        with:
+          python-version: '3.x' # Specify your desired Python version (e.g., '3.9', '3.10', '3.11')
+
+      - name: Install dependencies (if any)
+        run: |
+          # If your script has any external dependencies, list them in a requirements.txt
+          # pip install -r requirements.txt
+
+      - name: Execute Python script to generate file
+        run: python gen.py
+
+      - name: Commit and push the generated file
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add . # Add all changes (including the new file)
+          git commit -m "Automated file generation" --allow-empty
+          git push
