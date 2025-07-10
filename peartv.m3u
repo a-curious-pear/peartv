@@ -2,627 +2,762 @@
 # Generated from Hilay TV API
 # https://hilaytv.vercel.app/
 
-#EXTINF:-1 tvg-id="TVMaldives" tvg-name="TV Maldives" group-title="Hilay TV",TV Maldives
+#EXTINF:-1 tvg-id="TVMaldives" tvg-name="TV Maldives" group-title="Curious Pear",TV Maldives
 https://hugh.cdn.rumble.cloud/live/r8wvl35k/live-hls/yf8g-fhfh/chunklist_i1.m3u8
 
-#EXTINF:-1 tvg-id="MMTV" tvg-name="MM TV" group-title="Hilay TV",MM TV
+#EXTINF:-1 tvg-id="TVMaldivesbkp" tvg-name="Hilay TV Info" group-title="Curious Pear",Hilay TV Info
+https://embed-cloudfront.wistia.com/deliveries/67d7df44e707a702c339e46dfde19cd96260df5c.m3u8
+
+#EXTINF:-1 tvg-id="MMTV" tvg-name="MM TV" group-title="Curious Pear",MM TV
 https://sendlive.online/hls/mmtv.m3u8
 
-#EXTINF:-1 tvg-id="PSM" tvg-name="PSM NEWS" group-title="Hilay TV",PSM NEWS
+#EXTINF:-1 tvg-id="PSM" tvg-name="PSM NEWS" group-title="Curious Pear",PSM NEWS
 http://s5.alltvfree.com:8081/live/psmnews/playlist.m3u8
 
-#EXTINF:-1 tvg-id="RaajjeTV" tvg-name="Raajje TV" group-title="Hilay TV",Raajje TV
+#EXTINF:-1 tvg-id="RaajjeTV" tvg-name="Raajje TV" group-title="Curious Pear",Raajje TV
 https://stream.raajje.mv/live/rtv_live/index.m3u8
 
-#EXTINF:-1 tvg-id="SSTV" tvg-name="SSTV" group-title="Hilay TV",SSTV
+#EXTINF:-1 tvg-id="SSTV" tvg-name="SSTV" group-title="Curious Pear",SSTV
 https://sstv.ssplay.mv/hls/sstv-live/index.m3u8
 
-#EXTINF:-1 tvg-id="RelaxTV" tvg-name="Relax TV" group-title="Hilay TV",Relax TV
+#EXTINF:-1 tvg-id="RelaxTV" tvg-name="Relax TV" group-title="Curious Pear",Relax TV
 https://serv1.vlix.io/media/videos/h264/4c30cad7b1f0935cd62a.mp4
 
-#EXTINF:-1 tvg-id="vom" tvg-name="Dhivehi Rajjeyge Adu - Radio" group-title="Hilay TV",Dhivehi Rajjeyge Adu - Radio
+#EXTINF:-1 tvg-id="vom" tvg-name="Dhivehi Rajjeyge Adu - Radio" group-title="Curious Pear",Dhivehi Rajjeyge Adu - Radio
 https://radio.psm.mv/draair
 
-#EXTINF:-1 tvg-id="dfm" tvg-name="Dhivehi FM - Radio " group-title="Hilay TV",Dhivehi FM - Radio 
+#EXTINF:-1 tvg-id="dfm" tvg-name="Dhivehi FM - Radio " group-title="Curious Pear",Dhivehi FM - Radio 
 https://radio.psm.mv/fmair
 
-#EXTINF:-1 tvg-id="dheenugeadu" tvg-name="Dheenuge Adu Radio" group-title="Hilay TV",Dheenuge Adu Radio
+#EXTINF:-1 tvg-id="dheenugeadu" tvg-name="Dheenuge Adu Radio" group-title="Curious Pear",Dheenuge Adu Radio
 https://radio.psm.mv/dheenugeaduair
 
-#EXTINF:-1 tvg-id="SkyNewsSports" tvg-name="Sky Sports News" group-title="Hilay TV",Sky Sports News
+#EXTINF:-1 tvg-id="SkyNewsSports" tvg-name="Sky Sports News" group-title="Curious Pear",Sky Sports News
 https://a1xs.vip/2000004
 
-#EXTINF:-1 tvg-id="Bloomburg" tvg-name="Bloomberg UHD" group-title="Hilay TV",Bloomberg UHD
+#EXTINF:-1 tvg-id="Bloomburg" tvg-name="Bloomberg UHD" group-title="Curious Pear",Bloomberg UHD
 https://6fae2fb516504b2eaa11e5eb1e48bf1c.mediatailor.us-east-1.amazonaws.com/v1/master/44f73ba4d03e9607dcd9bebdcb8494d86964f1d8/Samsung-de_Bloomberg/playlist.m3u8?ads.wurl_channel=389&ads.wurl_name=Bloomberg&ads.psid=%7BPSID%7D&ads.targetopt=%7BTARGETOPT%7D&ads.app_domain=%7BAPP_DOMAIN%7D&ads.app_name=%7BAPP_NAME%7D&ads.coppa=0&ads.consent=%7BTC_STRING%7D
 
-#EXTINF:-1 tvg-id="Cheddar" tvg-name="Cheddar News HD" group-title="Hilay TV",Cheddar News HD
+#EXTINF:-1 tvg-id="Cheddar" tvg-name="Cheddar News HD" group-title="Curious Pear",Cheddar News HD
 https://cheddar-us.samsung.wurl.tv/playlist.m3u8
 
-#EXTINF:-1 tvg-id="Munnaaru" tvg-name="Munnaaru TV" group-title="Hilay TV",Munnaaru TV
+#EXTINF:-1 tvg-id="Munnaaru" tvg-name="Munnaaru TV" group-title="Curious Pear",Munnaaru TV
 http://s5.alltvfree.com:8081/live/munnaaru1/playlist.m3u8
 
-#EXTINF:-1 tvg-id="DhaarisTV" tvg-name="Dhaaris TV" group-title="Hilay TV",Dhaaris TV
+#EXTINF:-1 tvg-id="DhaarisTV" tvg-name="Dhaaris TV" group-title="Curious Pear",Dhaaris TV
 https://www.youtube.com/watch?v=OScj8RMBFV0
 
-#EXTINF:-1 tvg-id="Channel13" tvg-name="Channel 13" group-title="Hilay TV",Channel 13
+#EXTINF:-1 tvg-id="Channel13" tvg-name="Channel 13" group-title="Curious Pear",Channel 13
 https://www.youtube.com/watch?v=1a3Z8DYKFE0
 
-#EXTINF:-1 tvg-id="Yes" tvg-name="YES TV" group-title="Hilay TV",YES TV
+#EXTINF:-1 tvg-id="Yes" tvg-name="YES TV" group-title="Curious Pear",YES TV
 http://s5.alltvfree.com:8081/live/yestv/playlist.m3u8
 
-#EXTINF:-1 tvg-id="SanguTV" tvg-name="Sangu TV" group-title="Hilay TV",Sangu TV
+#EXTINF:-1 tvg-id="SanguTV" tvg-name="Sangu TV" group-title="Curious Pear",Sangu TV
 https://www.youtube.com/watch?v=UaVUWwbScPM
 
-#EXTINF:-1 tvg-id="Peacetv" tvg-name="Peace TV HD" group-title="Hilay TV",Peace TV HD
-/PeaceTvEnglish/index.m3u8?sid=G8g5GWpI_kOcNgNI1Qa8KQ
+#EXTINF:-1 tvg-id="Peacetv" tvg-name="Peace TV HD" group-title="Curious Pear",Peace TV HD
+/PeaceTvEnglish/index.m3u8?sid=u1oWKEEEe0-K2NEwq-qTfw
 
-#EXTINF:-1 tvg-id="Reuters" tvg-name="Reuters TV" group-title="Hilay TV",Reuters TV
+#EXTINF:-1 tvg-id="Reuters" tvg-name="Reuters TV" group-title="Curious Pear",Reuters TV
 https://amg00453-reuters-amg00453c1-xumo-us-2073.playouts.now.amagi.tv/reuters-reuters-hls/playlist1080P.m3u8
 
-#EXTINF:-1 tvg-id="AlJazeera" tvg-name="Al Jazeera TV" group-title="Hilay TV",Al Jazeera TV
+#EXTINF:-1 tvg-id="AlJazeera" tvg-name="Al Jazeera TV" group-title="Curious Pear",Al Jazeera TV
 https://f803ea8ce9bb4c4da10de19d54266609.mediatailor.us-east-1.amazonaws.com/v1/manifest/7b67fbda7ab859400a821e9aa0deda20ab7ca3d2/aljazeeraLive/903cca04-821e-4805-aaa3-6de2bc6c269d/4.m3u8
 
-#EXTINF:-1 tvg-id="AlMayadeen" tvg-name="Al Mayadeen TV" group-title="Hilay TV",Al Mayadeen TV
+#EXTINF:-1 tvg-id="AlMayadeen" tvg-name="Al Mayadeen TV" group-title="Curious Pear",Al Mayadeen TV
 https://mdnlv.cdn.octivid.com/almdn/smil:mpegts.stream.smil/playlist.m3u8
 
-#EXTINF:-1 tvg-id="CNN" tvg-name="CNN International" group-title="Hilay TV",CNN International
+#EXTINF:-1 tvg-id="CNN" tvg-name="CNN International" group-title="Curious Pear",CNN International
 https://turnerlive.warnermediacdn.com/hls/live/586495/cnngo/cnn_slate/VIDEO_0_3564000.m3u8
 
-#EXTINF:-1 tvg-id="BBC" tvg-name="BBC World" group-title="Hilay TV",BBC World
+#EXTINF:-1 tvg-id="BBC" tvg-name="BBC World" group-title="Curious Pear",BBC World
 https://vs-hls-push-ww-live.akamaized.net/x=4/i=urn:bbc:pips:service:bbc_news_channel_hd/t=3840/v=pv14/b=5070016/main.m3u8
 
-#EXTINF:-1 tvg-id="RT" tvg-name="RT International" group-title="Hilay TV",RT International
+#EXTINF:-1 tvg-id="RT" tvg-name="RT International" group-title="Curious Pear",RT International
 https://rt-glb.rttv.com/live/rtnews/playlist.m3u8
 
-#EXTINF:-1 tvg-id="Kix" tvg-name="Arirang Korea" group-title="Hilay TV",Arirang Korea
+#EXTINF:-1 tvg-id="Kix" tvg-name="Arirang Korea" group-title="Curious Pear",Arirang Korea
 https://amdlive-ch01-ctnd-com.akamaized.net/arirang_1ch/smil:arirang_1ch.smil/chunklist_b2256000_sleng.m3u8
 
-#EXTINF:-1 tvg-id="Kplus" tvg-name="KPOP+" group-title="Hilay TV",KPOP+
+#EXTINF:-1 tvg-id="Kplus" tvg-name="KPOP+" group-title="Curious Pear",KPOP+
 https://epg.provider.plex.tv/library/parts/5e20b730f2f8d5003d739db7-682e09a8dfc9c452b8f9bd66/variant.m3u8?x-plex-token=88ZAaxERjCsorAXHrZU7&x-plex-advertising-identifier=&x-plex-client-identifier=51b4294b-cda6-4978-bc73-c8a23480235a&x-plex-playback-id=p_5e7cfdd0-63f0-4f5d-91ac-3e0ef8ede11d&x-plex-playback-session-id=&x-plex-session-id=&x-plex-device=Windows&x-plex-device-name=Plex+Mediaverse&x-plex-advertising-donottrack=0&x-plex-drm=&x-plex-model=&x-plex-platform=Edge&x-plex-platform-version=138.0.0.0&x-plex-product=Plex+Mediaverse&x-plex-device-screen-resolution=&x-plex-device-vendor=&x-plex-version=&x-plex-provider-streaming-start=1751493831&url=4ec57ca7a554b376306f691e632713a1-ea46a0244c6148c3d89bbe792e3d6a49b036fcf0e1f1fd7492f25610c0281aac759f841af3acc91f5fea218912ccb1874a7fbbaf39872fd4778b08a47f88ecc64b2a471058d23c13b7ff45926ed52c5265003d8143fd2e2417fa00c327997b09adf28c2c88e1c2b7e25ecc490a9c90f22ac68e0812c745b19176ada3d68d83a568c1ac658a244fefe9432fdd632fb8aa09099cc3129e0def479eeb202777fdc05196f8715119bb2125475ca9b98bae6ad5cce34a569229d38da31fa49ef6a231190c9ba3fcabec436e9ccb932f8068c716c3065d7f1305e54dfe01207971ca1246742a51305806f15d4ebc393af798e61ae6f2adc36e29dfba5d7f193c809d443f934c49f6fccd75f41586f564b84b80f880002f7e6fc4804d89cce3b381923cf418ffe8424bb5a2d10bf7b1bf5b5c51ddc6bbfec1a8da2aee541512c1b6e2c1da6d174357d92db22af81a0ba7b47c4f26edec96d7b05f3823c52ffd1788b77f3582b26f386c19eb758e4864583f9edcab250ae3c99d9a6d4cb44c12bea1da361ec5894a5e74f9d2df4eb0e2e9f640ef1aed74c806a2d9756cf29518859667fe09a3c4c8bb818d8a46669c4911ae73e217fec2cc4e68bb4aebc48d1cc5931c4169a952595c5a45e045a6c37a193eff6d71fc82f9b97f3fd245cb01f9b20359f1e668670cea29bd2a00784d695e394c2d2da95c4a964fa57fad859679dc11229ab440652474351a1e016d318211d9ee7c528c6f67341394218bba3b579e3349280b385b88b52ac26f3cdb2afd4a0bbd6d39bfe2ba5d0164e62feed3f17a3f7cf2f3686db136a45a9eb02e9af5ff411c41d5406e19837189204b5c09196d44c9c7cf7afa96d6fab07d74ceb8d1ae1e5a3ad94eda952bdc121d1704ef3cddac30367cca4f0c183bd8c9b743bd18b548e9ca8868aaf04d7fd3782e4cc880348d8703081a0e6c31e74147219b3bb59ad06a27c4e284182d62e29cc8ba652f17cddc44e9aac952b16482a4720469285431ea6fcfabd41ef3977eb814864d21c5186b4586a89169be215262602242ead7f9a69a8496953ec0dc5c026fae5091caf503572d15ceedf164ccdf179ec009c08e68b4336c58e7f5df26c9e871cf299ef076debfafade6bb6fbc5b115fdeb74f84984c16297ebe81db46f68d734d40d81305cf2a09624f63629d2423e259cbd4545177992e3b66cf4d08b47ecc3a4d3b213e647751668966262a96dd256b7ebc1755a762f4787179934c5564d0a991c9613e918c479d00298358046c3b5df865c8fe75588a9ddac0e6d7d41ef0bae1661d4df67e8195637b6265862e82628f348e9e1571ca41e06d5f693ff8f74dcaac77870db7420587e453a84078c6ad93338eff570582ce6588f25016544e73a9974310fe5829bd85aa9a3d8f9513bb8dd1234e03b128b8ecf5ae6da19a631514c7da0bc3320b00846bf1dcf5a0da14c137569f8e24c48743fd9cf8a3df999effb2aab10f8ee0102b070777a29742b9ae84ccdf8183c4a3c6ec8171bf9ae00ca698892e6c6d7d95a2bde3b083a0c3d8fc3d0c22df0385400b1c695b3bc9620f65d86b7396a266317da91232bb161d488251377eb0254e385e311eb1a024bf78bbe7e1b95f3286e761b7dac9b2f7f41674db43f18b22bf0d5a3df5ec9f8465d41b6d7792ac71518860f810ea8cca216192223901a0f2771576996c9fdda3d7ea26d17cc7eedf867ab0280b16dc8771f4dd30c4d9ef15877fbe88eb529ab66fa1d071233c0a3bf2b0655d3efc938131d327cf668455b91fba945dbcbb28b48e467367b6967527b605d92397db6a8a84261d84f84dff12c71449352c338cd7cfe1d746a4d633a11c580866a68d6d2a95f588150cb711af40bd2c4bd93fb3b249df1c1bcffb1642d523f3d7e3ff855f7533b911e229adf668d07051d4535983fe3b19829e3f59e9729da561fb33facf9dff666b347d23d2102e7527d2b8a81443e38bbd20b812d1f375696367a55a9a4712ec71c7fd5885341dc55037c25845caa76ad5aa2ca1ca027de72fd1693f80c4c2a62ea23c0c03ab3f440208dc7a331a662a0055933743461a4d5aef29d95f0a71ecb257a2b0b4076c4eb3a8c2d33b220ca30e6a7fb353940893232c6e24657832b671ef0e647585450a636ef7cd2b71a2fb2c425522e04b6f0fb45dfa993bc67b3d5ec567dee7bdc88a83890545315caab265323d12adcf58e324bd5d135d12333ae8be921e39c47262f8a68cee412d2636454fa461246920f4ee7999de324dc25fbbbf33c8fd647924806d490264b340e270555e5dc88b49684cc851087174a9637b4a5026bdb1700d2f2b4a09643f71c63bb6a797316e9c58d6690a8a9c3bd1a135cd912d501093173c582e6b2982f4762a9cc2319f4811f9575261d5b026527e86b3fe2dc8694031d82573c949774936c845f39a1834569f67772825a691cec61e94a36692c84a83e72e8d7b591b7f1a8d952aa5d6b409bd6bb3101afa39471b89f736f0de48c5cd526919e5d91100fd37c322a9a768512ceeee5a4de0c3e382c107b300788afd6b9b0cbf7461a220a8e18165403c015665a395b59d3fd37b06905c082ab0156ea271c1d06ed40d713c350a0f33b5aab6c4af42d9d11fbc01fd937f4ddc0a5e732e8753c929ff0281549225a2627728d25386e0328a8669259be804457cce66d88b8e0e6aff53775b48033301fc8ca98a374a254f38a38988d3a0547cd1b3cecf505fd05b1d04362d3860d3d828
 
-#EXTINF:-1 tvg-id="KBSWorld" tvg-name="KBS World" group-title="Hilay TV",KBS World
-https://world.gscdn.kbs.co.kr/world-01/world-01_sd.m3u8?Expires=1752299844&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly93b3JsZC5nc2Nkbi5rYnMuY28ua3Ivd29ybGQtMDEvd29ybGQtMDFfc2QubTN1OCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc1MjI5OTg0NH19fV19&Signature=EwKPIPNTyWUZi3mugjCXnZTQyvaPkgi0wcogTL6UkOHNTj-0PRgaGslkIEWBXNcLfXuTYBBum3rIYs2gstpiw~L58YtY0bvBVPmcosVa1VtkWMNplkMXW3Dp~ymtH3HWAa5YP8kC~sdpyLuqfoSncErdp~~S5J2uS~saixn5ffcdYAqnRWyJDehNLrdQsQa1gRNEYw2hRkmJpxxPNT06HnrrTRw04MKWES2F056TbqHsCjQlVSt0c~0K0U1dj3qOg7a~KBXBB0EMvcrqk71-CNS4kNX3N9e8FS9pC~eliwRQcB23s8uUez~yyP-ohGnFcJL~hxBksrpkJETeymnM9Q__&Key-Pair-Id=APKAICDSGT3Y7IXGJ3TA
+#EXTINF:-1 tvg-id="KBSWorld" tvg-name="KBS World" group-title="Curious Pear",KBS World
+https://world.gscdn.kbs.co.kr/world-01/world-01_sd.m3u8?Expires=1752301618&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly93b3JsZC5nc2Nkbi5rYnMuY28ua3Ivd29ybGQtMDEvd29ybGQtMDFfc2QubTN1OCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc1MjMwMTYxOH19fV19&Signature=d5GRdW0rlRJHaPhe~vZSbFECc02oSTHOm9STYHThQEwO0DbO~vNfQQ~uATziOsjEgjklB4SSn8RRO87XcD6KOo3XRzybLqn~2uyHO8sYNbcbvmt1bdXbmz~9SubPDcC-FihW8iY4yhCiC-AM~4S14abEidozvKeSR2nku2gW1jL2QdaX6YxWXri8W5~RTFjEi2dkKtiXGN6FS~ass30Xuijz7A8PCCo-SLfFazIE2jVjZHvqasxoXlHYdaRJydLat~FmjlXkMS96a87PjxuqDTlqfi-3ZQZfI4I9P2stzGwi8h5PpcQ73~L3VXC6aHxT0JJ2ttmFlZwGQsOiWkzmyg__&Key-Pair-Id=APKAICDSGT3Y7IXGJ3TA
 
-#EXTINF:-1 tvg-id="FashionTV" tvg-name="Fashion TV" group-title="Hilay TV",Fashion TV
+#EXTINF:-1 tvg-id="FashionTV" tvg-name="Fashion TV" group-title="Curious Pear",Fashion TV
 https://fashiontv-fashiontv-1-eu.rakuten.wurl.tv/playlist.m3u8
 
-#EXTINF:-1 tvg-id="FashionTVUHD" tvg-name="Fashion TV 4K" group-title="Hilay TV",Fashion TV 4K
+#EXTINF:-1 tvg-id="FashionTVUHD" tvg-name="Fashion TV 4K" group-title="Curious Pear",Fashion TV 4K
 https://fash2043.cloudycdn.services/slive/ftv_ftv_4k_hevc_73d_42080_default_466_hls.smil/playlist.m3u8
 
-#EXTINF:-1 tvg-id="GBNews" tvg-name="GB News" group-title="Hilay TV",GB News
+#EXTINF:-1 tvg-id="GBNews" tvg-name="GB News" group-title="Curious Pear",GB News
 https://amg01076-lightningintern-gbnewsnz-samsungnz-rlcsd.amagi.tv/playlist/amg01076-lightningintern-gbnewsnz-samsungnz/playlist.m3u8
 
-#EXTINF:-1 tvg-id="DWEnglish" tvg-name="DW English" group-title="Hilay TV",DW English
+#EXTINF:-1 tvg-id="DWEnglish" tvg-name="DW English" group-title="Curious Pear",DW English
 https://dwamdstream102.akamaized.net/hls/live/2015525/dwstream102/index.m3u8
 
-#EXTINF:-1 tvg-id="SkyNewsAu" tvg-name="Sky News International" group-title="Hilay TV",Sky News International
+#EXTINF:-1 tvg-id="SkyNewsAu" tvg-name="Sky News International" group-title="Curious Pear",Sky News International
 https://dbrb49pjoymg4.cloudfront.net/manifest/3fec3e5cac39a52b2132f9c66c83dae043dc17d4/prod_default_xumo-ams-aws/bd32c8aa-7fc7-41c9-981c-2adc7ede21f3/4.m3u8
 
-#EXTINF:-1 tvg-id="ScrippsNews" tvg-name="Scripps News" group-title="Hilay TV",Scripps News
+#EXTINF:-1 tvg-id="ScrippsNews" tvg-name="Scripps News" group-title="Curious Pear",Scripps News
 https://content.uplynk.com/channel/33c48f602cfd4474b957eb4ad999caf8.m3u8
 
-#EXTINF:-1 tvg-id="CNAInternational" tvg-name="CNA International" group-title="Hilay TV",CNA International
+#EXTINF:-1 tvg-id="CNAInternational" tvg-name="CNA International" group-title="Curious Pear",CNA International
 https://d2e1asnsl7br7b.cloudfront.net/7782e205e72f43aeb4a48ec97f66ebbe/index.m3u8
 
-#EXTINF:-1 tvg-id="AlArabiya" tvg-name="Al Arabiya" group-title="Hilay TV",Al Arabiya
+#EXTINF:-1 tvg-id="AlArabiya" tvg-name="Al Arabiya" group-title="Curious Pear",Al Arabiya
 https://live.alarabiya.net/alarabiapublish/alarabiya.smil/playlist.m3u8
 
-#EXTINF:-1 tvg-id="NDTV24x7" tvg-name="NDTV 24x7" group-title="Hilay TV",NDTV 24x7
+#EXTINF:-1 tvg-id="NDTV24x7" tvg-name="NDTV 24x7" group-title="Curious Pear",NDTV 24x7
 https://ndtv24x7elemarchana.akamaized.net/hls/live/2003678/ndtv24x7/master.m3u8
 
-#EXTINF:-1 tvg-id="NHKWorldJapan" tvg-name="NHK World Japan" group-title="Hilay TV",NHK World Japan
+#EXTINF:-1 tvg-id="NHKWorldJapan" tvg-name="NHK World Japan" group-title="Curious Pear",NHK World Japan
 https://nhkworld-tv.akamaized.net/hls/live/2115640/nhkworld-tv/index_1M.m3u8
 
-#EXTINF:-1 tvg-id="RTFrance" tvg-name="Press TV" group-title="Hilay TV",Press TV
+#EXTINF:-1 tvg-id="RTFrance" tvg-name="Press TV" group-title="Curious Pear",Press TV
 https://live.presstv.ir/hls/presstv_5_482/index.m3u8
 
-#EXTINF:-1 tvg-id="TV5MondeInfo" tvg-name="TV5 Monde Info" group-title="Hilay TV",TV5 Monde Info
+#EXTINF:-1 tvg-id="TV5MondeInfo" tvg-name="TV5 Monde Info" group-title="Curious Pear",TV5 Monde Info
 https://ott.tv5monde.com/Content/HLS/Live/channel(info)/variant.m3u8
 
-#EXTINF:-1 tvg-id="SonyKal" tvg-name="Sony Kal US" group-title="Hilay TV",Sony Kal US
+#EXTINF:-1 tvg-id="SonyKal" tvg-name="Sony Kal US" group-title="Curious Pear",Sony Kal US
 https://spt-sonykal-1-us.lg.wurl.tv/playlist_3000k.m3u8
 
-#EXTINF:-1 tvg-id="SonyMax" tvg-name="Sony MAX HD" group-title="Hilay TV",Sony MAX HD
+#EXTINF:-1 tvg-id="SonyMax" tvg-name="Sony MAX HD" group-title="Curious Pear",Sony MAX HD
 http://s5.alltvfree.com:8081/live/sonymax_480p/playlist.m3u8
 
-#EXTINF:-1 tvg-id="SonySab" tvg-name="Sony SAB HD" group-title="Hilay TV",Sony SAB HD
+#EXTINF:-1 tvg-id="SonySab" tvg-name="Sony SAB HD" group-title="Curious Pear",Sony SAB HD
 http://103.120.172.74:4400
 
-#EXTINF:-1 tvg-id="Starplus" tvg-name="Star Plus HD" group-title="Hilay TV",Star Plus HD
+#EXTINF:-1 tvg-id="Starplus" tvg-name="Star Plus HD" group-title="Curious Pear",Star Plus HD
 https://sflex07.fun/tst/9899/t.php?id=167
 
-#EXTINF:-1 tvg-id="StarGold" tvg-name="Star Gold HD" group-title="Hilay TV",Star Gold HD
+#EXTINF:-1 tvg-id="StarGold" tvg-name="Star Gold HD" group-title="Curious Pear",Star Gold HD
 http://tv.cloudcdn.me:80/live.ts?channelId=196&uid=13556&deviceMac=00:1A:79:AB:DF:A6
 
-#EXTINF:-1 tvg-id="Starbharat" tvg-name="Star Bharat HD" group-title="Hilay TV",Star Bharat HD
+#EXTINF:-1 tvg-id="Starbharat" tvg-name="Star Bharat HD" group-title="Curious Pear",Star Bharat HD
 http://103.120.172.74:5000
 
-#EXTINF:-1 tvg-id="colourshd" tvg-name="Colors HD" group-title="Hilay TV",Colors HD
+#EXTINF:-1 tvg-id="colourshd" tvg-name="Colors HD" group-title="Curious Pear",Colors HD
 http://103.120.172.74:1150
 
-#EXTINF:-1 tvg-id="Zeetvhd" tvg-name="Zee TV HD" group-title="Hilay TV",Zee TV HD
+#EXTINF:-1 tvg-id="Zeetvhd" tvg-name="Zee TV HD" group-title="Curious Pear",Zee TV HD
 https://sflex07.fun/tst/9899/t.php?id=46
 
-#EXTINF:-1 tvg-id="zeecinema" tvg-name="Zee Bollywood" group-title="Hilay TV",Zee Bollywood
+#EXTINF:-1 tvg-id="zeecinema" tvg-name="Zee Bollywood" group-title="Curious Pear",Zee Bollywood
 https://sflex07.fun/tst/9899/t.php?id=966
 
-#EXTINF:-1 tvg-id="stargoldsel" tvg-name="Star Gold Select HD" group-title="Hilay TV",Star Gold Select HD
+#EXTINF:-1 tvg-id="stargoldsel" tvg-name="Star Gold Select HD" group-title="Curious Pear",Star Gold Select HD
 https://portal-to-m3u-07.iptv07india.workers.dev/?id=3177
 
-#EXTINF:-1 tvg-id="SEThd" tvg-name="Sony TV HD" group-title="Hilay TV",Sony TV HD
+#EXTINF:-1 tvg-id="SEThd" tvg-name="Sony TV HD" group-title="Curious Pear",Sony TV HD
 http://217.20.112.199/sethd/index.m3u8
 
-#EXTINF:-1 tvg-id="MTVbeatshd" tvg-name="MTV Music LIVE" group-title="Hilay TV",MTV Music LIVE
+#EXTINF:-1 tvg-id="MTVbeatshd" tvg-name="MTV Music LIVE" group-title="Curious Pear",MTV Music LIVE
 http://190.102.246.93:9005/play/a01p
 
-#EXTINF:-1 tvg-id="MTVHD" tvg-name="MTV HD" group-title="Hilay TV",MTV HD
+#EXTINF:-1 tvg-id="MTVHD" tvg-name="MTV HD" group-title="Curious Pear",MTV HD
 https://portal-to-m3u-07.iptv07india.workers.dev/?id=3113
 
-#EXTINF:-1 tvg-id="musicindia" tvg-name="Music India" group-title="Hilay TV",Music India
+#EXTINF:-1 tvg-id="musicindia" tvg-name="Music India" group-title="Curious Pear",Music India
 https://portal-to-m3u-07.iptv07india.workers.dev/?id=3131
 
-#EXTINF:-1 tvg-id="Loupe4k" tvg-name="Loupe 4K" group-title="Hilay TV",Loupe 4K
+#EXTINF:-1 tvg-id="Loupe4k" tvg-name="Loupe 4K" group-title="Curious Pear",Loupe 4K
 http://d2dw21aq0j0l5c.cloudfront.net/playlist_3840x2160.m3u8
 
-#EXTINF:-1 tvg-id="WorldFishingNet" tvg-name="World Fishing Network" group-title="Hilay TV",World Fishing Network
+#EXTINF:-1 tvg-id="WorldFishingNet" tvg-name="World Fishing Network" group-title="Curious Pear",World Fishing Network
 http://fl3.moveonjoy.com/WORLD_FISHING_NETWORK/index.m3u8
 
-#EXTINF:-1 tvg-id="AlQuranTV" tvg-name="Al Quran TV" group-title="Hilay TV",Al Quran TV
+#EXTINF:-1 tvg-id="AlQuranTV" tvg-name="Al Quran TV" group-title="Curious Pear",Al Quran TV
 http://m.live.net.sa:1935/live/quran/playlist.m3u8
 
-#EXTINF:-1 tvg-id="Islamch" tvg-name="Islam Channel UK" group-title="Hilay TV",Islam Channel UK
+#EXTINF:-1 tvg-id="Islamch" tvg-name="Islam Channel UK" group-title="Curious Pear",Islam Channel UK
 https://live.islamchannel.tv/live11/islamtv_english/bitrate1.isml/live.m3u8
 
-#EXTINF:-1 tvg-id="TraceSportsStars" tvg-name="Trace Sport Stars" group-title="Hilay TV",Trace Sport Stars
+#EXTINF:-1 tvg-id="TraceSportsStars" tvg-name="Trace Sport Stars" group-title="Curious Pear",Trace Sport Stars
 http://tracesportstars-samsunges.amagi.tv/hls/amagi_hls_data_samsunguk-tracesport-samsungspain/CDN/playlist.m3u8
 
-#EXTINF:-1 tvg-id="TraceUrbanMusic" tvg-name="Trace Urban Music" group-title="Hilay TV",Trace Urban Music
+#EXTINF:-1 tvg-id="TraceUrbanMusic" tvg-name="Trace Urban Music" group-title="Curious Pear",Trace Urban Music
 https://amg01076-lightningintern-traceurban-samsungnz-5x2cu.amagi.tv/playlist/amg01076-lightningintern-traceurban-samsungnz/playlist.m3u8
 
-#EXTINF:-1 tvg-id="traceuk" tvg-name="Trace UK Music" group-title="Hilay TV",Trace UK Music
+#EXTINF:-1 tvg-id="traceuk" tvg-name="Trace UK Music" group-title="Curious Pear",Trace UK Music
 https://d35j504z0x2vu2.cloudfront.net/v1/manifest/0bc8e8376bd8417a1b6761138aa41c26c7309312/trace-uk/d74a338e-f441-439a-b329-e25a0cb65fd1/3.m3u8
 
-#EXTINF:-1 tvg-id="balle" tvg-name="Balle Balle" group-title="Hilay TV",Balle Balle
+#EXTINF:-1 tvg-id="balle" tvg-name="Balle Balle" group-title="Curious Pear",Balle Balle
 https://d35j504z0x2vu2.cloudfront.net/v1/manifest/0bc8e8376bd8417a1b6761138aa41c26c7309312/balle-balle/30a793e7-6de0-4725-afd4-ebc856ab2a02/2.m3u8
 
-#EXTINF:-1 tvg-id="9xjalwa" tvg-name="9x Jalwa" group-title="Hilay TV",9x Jalwa
+#EXTINF:-1 tvg-id="9xjalwa" tvg-name="9x Jalwa" group-title="Curious Pear",9x Jalwa
 https://d35j504z0x2vu2.cloudfront.net/v1/manifest/0bc8e8376bd8417a1b6761138aa41c26c7309312/9x-jalwa/cb55fb1a-bf23-48a6-8cf3-6947a6361740/3.m3u8
 
-#EXTINF:-1 tvg-id="hindihits" tvg-name="Hindi Hits HD" group-title="Hilay TV",Hindi Hits HD
+#EXTINF:-1 tvg-id="hindihits" tvg-name="Hindi Hits HD" group-title="Curious Pear",Hindi Hits HD
 http://146.59.253.52:8080/hindihitshd/index.m3u8
 
-#EXTINF:-1 tvg-id="E24" tvg-name="E 24" group-title="Hilay TV",E 24
+#EXTINF:-1 tvg-id="E24" tvg-name="E 24" group-title="Curious Pear",E 24
 https://live-e24.dailyhunt.in/eternowsa/live/amlst:E24_,b256,b512,b1024,b1824,.smil/playlist.m3u8
 
-#EXTINF:-1 tvg-id="CountryMusic" tvg-name="The Country Network" group-title="Hilay TV",The Country Network
+#EXTINF:-1 tvg-id="CountryMusic" tvg-name="The Country Network" group-title="Curious Pear",The Country Network
 https://amg00600-amg00600c1-thecountrynetwork-us-5497.playouts.now.amagi.tv/playlist.m3u8
 
-#EXTINF:-1 tvg-id="VH1" tvg-name="VH1 TV" group-title="Hilay TV",VH1 TV
+#EXTINF:-1 tvg-id="VH1" tvg-name="VH1 TV" group-title="Curious Pear",VH1 TV
 http://fl3.moveonjoy.com/VH1/index.m3u8
 
-#EXTINF:-1 tvg-id="mplus" tvg-name="M+ HD" group-title="Hilay TV",M+ HD
+#EXTINF:-1 tvg-id="mplus" tvg-name="M+ HD" group-title="Curious Pear",M+ HD
 https://d35j504z0x2vu2.cloudfront.net/v1/manifest/0bc8e8376bd8417a1b6761138aa41c26c7309312/m-plus/8a9e471b-d0e5-47a8-8a0e-89bc277a8eec/0.m3u8
 
-#EXTINF:-1 tvg-id="AstroSports" tvg-name="Astro Football" group-title="Hilay TV",Astro Football
+#EXTINF:-1 tvg-id="AstroSports" tvg-name="Astro Football" group-title="Curious Pear",Astro Football
 https://s1.tvm4a1.cfd/astro/CH-0/AKTV.m3u8
 
-#EXTINF:-1 tvg-id="astropl2" tvg-name="Astro Premier League 2" group-title="Hilay TV",Astro Premier League 2
+#EXTINF:-1 tvg-id="astropl2" tvg-name="Astro Premier League 2" group-title="Curious Pear",Astro Premier League 2
 https://a1xs.vip/1100031
 
-#EXTINF:-1 tvg-id="AstroSportsPlus" tvg-name="Astro Sports Plus" group-title="Hilay TV",Astro Sports Plus
+#EXTINF:-1 tvg-id="AstroSportsPlus" tvg-name="Astro Sports Plus" group-title="Curious Pear",Astro Sports Plus
 https://ott.djdoolky76.net/stream/astro/astrosportsplus/master.m3u8?u=udpteam@djdoolky76&p=3a35aa73dc4c1efbd166d75276a463e549ce3195c6d340d68b807dbc6da16ba8
 
-#EXTINF:-1 tvg-id="SkySportsME" tvg-name="Sky Sports Main Event HD" group-title="Hilay TV",Sky Sports Main Event HD
+#EXTINF:-1 tvg-id="SkySportsME" tvg-name="Sky Sports Main Event HD" group-title="Curious Pear",Sky Sports Main Event HD
 https://nl1.rocketdns.info:25463/hankstreamer/sYWcksogwN/2184?token=HkNcWEBYFAkUBgNWBFZXAgpWBgYFXAcAVQNWVwIEVAVQV1ZcAgEAUQESH0ZAFRFRUwtoXlQaXgFTWQcdERBBVhc+XV0RChQCBwIBVAVDTxZGD1pSEgJVBFZWBwMHUQAHSUNEUFcSDBEOBgZWEU1BUUoSUkVeWQhsBgRFWFAAEAkLFFhVHxJZXWlUVglSDwcWCEQHFRwaDUASQwlfRgleH0cDXU1BUUJWFAoRUgBUURYeRFRYRVYQQRtDCRNmNhAfRwRMTVZeRVpZXhFeERUQFh5EXkRvSgFAFhNWUF4AQBFfQwUbHxJbUk5vUAtdDwZXRg9YWUMaXhFVVAMTH0dfXAsIQFZBb0ZaUhIJRgpYVQcQGw==
 
-#EXTINF:-1 tvg-id="SkySportsMEUHD" tvg-name="Sky Sports Main Event UHD" group-title="Hilay TV",Sky Sports Main Event UHD
+#EXTINF:-1 tvg-id="SkySportsMEUHD" tvg-name="Sky Sports Main Event UHD" group-title="Curious Pear",Sky Sports Main Event UHD
 https://a1xs.vip/2000015
 
-#EXTINF:-1 tvg-id="SkySportsPLNZ" tvg-name="Sky Sports Premier League UHD" group-title="Hilay TV",Sky Sports Premier League UHD
+#EXTINF:-1 tvg-id="SkySportsPLNZ" tvg-name="Sky Sports Premier League UHD" group-title="Curious Pear",Sky Sports Premier League UHD
 https://a1xs.vip/rs/live/SF11/vulwBvtfo9/118592.ts
 
-#EXTINF:-1 tvg-id="SkyF1UHD" tvg-name="Sky Sports F1 UHD" group-title="Hilay TV",Sky Sports F1 UHD
+#EXTINF:-1 tvg-id="SkyF1UHD" tvg-name="Sky Sports F1 UHD" group-title="Curious Pear",Sky Sports F1 UHD
 https://a1xs.vip/2000016
 
-#EXTINF:-1 tvg-id="SkySports1" tvg-name="Sky Sports 1 FHD" group-title="Hilay TV",Sky Sports 1 FHD
+#EXTINF:-1 tvg-id="SkySports1" tvg-name="Sky Sports 1 FHD" group-title="Curious Pear",Sky Sports 1 FHD
 https://a1xs.vip/700031
 
-#EXTINF:-1 tvg-id="SkySports2" tvg-name="Sky Sports 2 FHD" group-title="Hilay TV",Sky Sports 2 FHD
+#EXTINF:-1 tvg-id="SkySports2" tvg-name="Sky Sports 2 FHD" group-title="Curious Pear",Sky Sports 2 FHD
 https://a1xs.vip/700032
 
-#EXTINF:-1 tvg-id="SkySports3" tvg-name="Sky Sports 3 FHD" group-title="Hilay TV",Sky Sports 3 FHD
+#EXTINF:-1 tvg-id="SkySports3" tvg-name="Sky Sports 3 FHD" group-title="Curious Pear",Sky Sports 3 FHD
 https://a1xs.vip/700033
 
-#EXTINF:-1 tvg-id="SkySports4" tvg-name="Sky Sports 4 FHD" group-title="Hilay TV",Sky Sports 4 FHD
+#EXTINF:-1 tvg-id="SkySports4" tvg-name="Sky Sports 4 FHD" group-title="Curious Pear",Sky Sports 4 FHD
 https://a1xs.vip/700034
 
-#EXTINF:-1 tvg-id="SkySports5" tvg-name="Sky Sports 5 FHD" group-title="Hilay TV",Sky Sports 5 FHD
+#EXTINF:-1 tvg-id="SkySports5" tvg-name="Sky Sports 5 FHD" group-title="Curious Pear",Sky Sports 5 FHD
 https://a1xs.vip/700035
 
-#EXTINF:-1 tvg-id="SkySports6" tvg-name="Sky Sports 6 FHD" group-title="Hilay TV",Sky Sports 6 FHD
+#EXTINF:-1 tvg-id="SkySports6" tvg-name="Sky Sports 6 FHD" group-title="Curious Pear",Sky Sports 6 FHD
 https://a1xs.vip/700036
 
-#EXTINF:-1 tvg-id="SkySports7" tvg-name="Sky Sports 7 FHD" group-title="Hilay TV",Sky Sports 7 FHD
+#EXTINF:-1 tvg-id="SkySports7" tvg-name="Sky Sports 7 FHD" group-title="Curious Pear",Sky Sports 7 FHD
 https://a1xs.vip/700037
 
-#EXTINF:-1 tvg-id="SkySports8" tvg-name="Sky Sports 8 FHD" group-title="Hilay TV",Sky Sports 8 FHD
+#EXTINF:-1 tvg-id="SkySports8" tvg-name="Sky Sports 8 FHD" group-title="Curious Pear",Sky Sports 8 FHD
 https://a1xs.vip/rs/live/SF11/vulwBvtfo9/118592.ts
 
-#EXTINF:-1 tvg-id="SkySports9" tvg-name="Sky Sports 9 FHD" group-title="Hilay TV",Sky Sports 9 FHD
+#EXTINF:-1 tvg-id="SkySports9" tvg-name="Sky Sports 9 FHD" group-title="Curious Pear",Sky Sports 9 FHD
 http://103.140.3.18:7860/ddy/596
 
-#EXTINF:-1 tvg-id="premiersp1" tvg-name="Premier Sports One" group-title="Hilay TV",Premier Sports One
+#EXTINF:-1 tvg-id="premiersp1" tvg-name="Premier Sports One" group-title="Curious Pear",Premier Sports One
 http://primestreams.tv/live/SF11/vulwBvtfo9/98771.ts
 
-#EXTINF:-1 tvg-id="premiersp2" tvg-name="Premier Sports Two" group-title="Hilay TV",Premier Sports Two
+#EXTINF:-1 tvg-id="premiersp2" tvg-name="Premier Sports Two" group-title="Curious Pear",Premier Sports Two
 https://a1xs.vip/8000022
 
-#EXTINF:-1 tvg-id="Golazo" tvg-name="CBS Golazo Network" group-title="Hilay TV",CBS Golazo Network
+#EXTINF:-1 tvg-id="Golazo" tvg-name="CBS Golazo Network" group-title="Curious Pear",CBS Golazo Network
 http://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/63a0e33a45264d000850ed7elivestitch/master.m3u8?appName=web&appVersion=unknown&clientTime=0&deviceDNT=0&deviceId=6c291880-30d3-11ef-9cf5-e9ddff8ff496&deviceMake=Chrome&deviceModel=web&deviceType=web&deviceVersion=unknown&includeExtendedEvents=false&serverSideAds=false&sid=38bc0031-c914-4d68-b55f-12d8ef870e44&profilesFromStream=true
 
-#EXTINF:-1 tvg-id="SuperLaliga" tvg-name="Fuel TV" group-title="Hilay TV",Fuel TV
+#EXTINF:-1 tvg-id="SuperLaliga" tvg-name="Fuel TV" group-title="Curious Pear",Fuel TV
 https://d35j504z0x2vu2.cloudfront.net/v1/manifest/0bc8e8376bd8417a1b6761138aa41c26c7309312/fuel-tv-ww/ad516468-7fc2-44e0-af45-f8e7e4412d24/4.m3u8
 
-#EXTINF:-1 tvg-id="dazn1" tvg-name="DAZN 1" group-title="Hilay TV",DAZN 1
+#EXTINF:-1 tvg-id="dazn1" tvg-name="DAZN 1" group-title="Curious Pear",DAZN 1
 http://kstv.us:8080/live/jgarcia31/224178522/48443.m3u8
 
-#EXTINF:-1 tvg-id="dazn1sp" tvg-name="DAZN" group-title="Hilay TV",DAZN
+#EXTINF:-1 tvg-id="dazn1sp" tvg-name="DAZN" group-title="Curious Pear",DAZN
 http://soccerplay.live:8080/play/live.php?mac=00:1A:79:38:63:66&stream=182148&extension=ts
 
-#EXTINF:-1 tvg-id="dazn2" tvg-name="DAZN TV" group-title="Hilay TV",DAZN TV
+#EXTINF:-1 tvg-id="dazn2" tvg-name="DAZN TV" group-title="Curious Pear",DAZN TV
 https://jmp2.uk/plu-647f07e74cfc2c0008a2e557.m3u8
 
-#EXTINF:-1 tvg-id="dazn2sp" tvg-name="DAZN 2 Germany" group-title="Hilay TV",DAZN 2 Germany
+#EXTINF:-1 tvg-id="dazn2sp" tvg-name="DAZN 2 Germany" group-title="Curious Pear",DAZN 2 Germany
 http://103.140.3.18:7860/ddy/427
 
-#EXTINF:-1 tvg-id="dazn3" tvg-name="DAZN 3 PT" group-title="Hilay TV",DAZN 3 PT
+#EXTINF:-1 tvg-id="dazn3" tvg-name="DAZN 3 PT" group-title="Curious Pear",DAZN 3 PT
 http://kstv.us:8080/live/jgarcia31/224178522/48445.m3u8
 
-#EXTINF:-1 tvg-id="dazn4" tvg-name="DAZN 4 Spain" group-title="Hilay TV",DAZN 4 Spain
+#EXTINF:-1 tvg-id="dazn4" tvg-name="DAZN 4 Spain" group-title="Curious Pear",DAZN 4 Spain
 http://103.140.3.18:7860/ddy/448
 
-#EXTINF:-1 tvg-id="daznlaliga" tvg-name="DAZN Laliga" group-title="Hilay TV",DAZN Laliga
+#EXTINF:-1 tvg-id="daznlaliga" tvg-name="DAZN Laliga" group-title="Curious Pear",DAZN Laliga
 https://ott-sg.djdoolky76.net/stream/udptv/daznlaliga/master.m3u8?u=udpteam@djdoolky76&p=3a35aa73dc4c1efbd166d75276a463e549ce3195c6d340d68b807dbc6da16ba8
 
-#EXTINF:-1 tvg-id="daznlaliga2" tvg-name="Ryz Sports network" group-title="Hilay TV",Ryz Sports network
+#EXTINF:-1 tvg-id="daznlaliga2" tvg-name="Ryz Sports network" group-title="Curious Pear",Ryz Sports network
 https://dbrb49pjoymg4.cloudfront.net/manifest/3fec3e5cac39a52b2132f9c66c83dae043dc17d4/prod_default_xumo-ams-aws/6fa21a7a-57e4-47cd-9ea2-4793d58848c4/4.m3u8
 
-#EXTINF:-1 tvg-id="daznf1" tvg-name="DAZN Women's Football" group-title="Hilay TV",DAZN Women's Football
+#EXTINF:-1 tvg-id="daznf1" tvg-name="DAZN Women's Football" group-title="Curious Pear",DAZN Women's Football
 https://dazn-daznwomensfootball-rakuten.amagi.tv/hls/amagi_hls_data_rakutenAA-dazn-daznwomensfootball-rakuten/CDN/master.m3u8?ads_amagi_channel=855&ads_amznbrmid=&ads_amznregion=&ads_amznslots=&ads_app_version=&ads_brand_name=&ads_content_classification=0&ads_device_lmt=0&ads_device_make=chrome&ads_device_model=GENERIC&ads_device_type=web&ads_device_year=1970&ads_env=prod&ads_gdpr_consent=&ads_market=uk&ads_os_language=&ads_player_height=1080&ads_player_width=1920&ads_pod_type=playerpage_midroll&ads_ppid=c8e61e11-2bd8-40a6-adc2-4b266186548f&ads_rtv_content_id=5029&ads_rtv_content_language=eng&ads_rtvid=271858&ads_streaming_id=84296508-3a8e-4d24-955b-b2fde32d82e9&ads_tivo_devcountry=&ads_tivo_devmakedate=&ads_tivo_mvpd=&ads_tivo_platform=&ads_tivo_usid=&ads_tivo_uxloc=&ads_user_type=visitor
 
-#EXTINF:-1 tvg-id="LoveNature4K" tvg-name="Love Nature 4K" group-title="Hilay TV",Love Nature 4K
+#EXTINF:-1 tvg-id="LoveNature4K" tvg-name="Love Nature 4K" group-title="Curious Pear",Love Nature 4K
 https://d18dyiwu97wm6q.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/LoveNature4K2-prod/playlist.m3u8
 
-#EXTINF:-1 tvg-id="TravelXP4k" tvg-name="Travel XP" group-title="Hilay TV",Travel XP
+#EXTINF:-1 tvg-id="TravelXP4k" tvg-name="Travel XP" group-title="Curious Pear",Travel XP
 https://27c980761ff9437d929e64647afe183a.mediatailor.us-east-1.amazonaws.com/v1/manifest/44f73ba4d03e9607dcd9bebdcb8494d86964f1d8/RakutenTV-eu_TravelXP/9aead721-0f82-4fa6-8871-510c340aa21a/1.m3u8
 
-#EXTINF:-1 tvg-id="NatGeo" tvg-name="National Geographic" group-title="Hilay TV",National Geographic
+#EXTINF:-1 tvg-id="NatGeo" tvg-name="National Geographic" group-title="Curious Pear",National Geographic
 http://fl3.moveonjoy.com/National_Geographic/index.m3u8
 
-#EXTINF:-1 tvg-id="NatWild" tvg-name="National Geographic Wild" group-title="Hilay TV",National Geographic Wild
+#EXTINF:-1 tvg-id="NatWild" tvg-name="National Geographic Wild" group-title="Curious Pear",National Geographic Wild
 http://fl3.moveonjoy.com/Nat_Geo_Wild/index.m3u8
 
-#EXTINF:-1 tvg-id="DesignNetwork" tvg-name="The Design Network" group-title="Hilay TV",The Design Network
+#EXTINF:-1 tvg-id="DesignNetwork" tvg-name="The Design Network" group-title="Curious Pear",The Design Network
 https://amg00441-amg00441c1-xumo-us-5144.playouts.now.amagi.tv/playlist.m3u8
 
-#EXTINF:-1 tvg-id="BeinSports" tvg-name="Bein Sports" group-title="Hilay TV",Bein Sports
+#EXTINF:-1 tvg-id="BeinSports" tvg-name="Bein Sports" group-title="Curious Pear",Bein Sports
 http://fl3.moveonjoy.com/BEIN_SPORTS/index.m3u8
 
-#EXTINF:-1 tvg-id="BeinSports1" tvg-name="Bein Sports One" group-title="Hilay TV",Bein Sports One
+#EXTINF:-1 tvg-id="BeinSports1" tvg-name="Bein Sports One" group-title="Curious Pear",Bein Sports One
 http://primestreams.tv/live/SF11/vulwBvtfo9/110876.ts
 
-#EXTINF:-1 tvg-id="BeinSports2" tvg-name="Bein Sports Two" group-title="Hilay TV",Bein Sports Two
+#EXTINF:-1 tvg-id="BeinSports2" tvg-name="Bein Sports Two" group-title="Curious Pear",Bein Sports Two
 http://primestreams.tv/live/SF11/vulwBvtfo9/110877.ts
 
-#EXTINF:-1 tvg-id="BeinSports3" tvg-name="Bein Sports Three" group-title="Hilay TV",Bein Sports Three
+#EXTINF:-1 tvg-id="BeinSports3" tvg-name="Bein Sports Three" group-title="Curious Pear",Bein Sports Three
 http://primestreams.tv/live/SF11/vulwBvtfo9/110878.ts
 
-#EXTINF:-1 tvg-id="BeinSportsXtra" tvg-name="Bein Sports Xtra" group-title="Hilay TV",Bein Sports Xtra
+#EXTINF:-1 tvg-id="BeinSportsXtra" tvg-name="Bein Sports Xtra" group-title="Curious Pear",Bein Sports Xtra
 https://amg01334-beinsportsllc-beinxtra-localnow-kcy6r.amagi.tv/playlist.m3u8
 
-#EXTINF:-1 tvg-id="nbcsportsnow" tvg-name="NBC Sports now" group-title="Hilay TV",NBC Sports now
+#EXTINF:-1 tvg-id="nbcsportsnow" tvg-name="NBC Sports now" group-title="Curious Pear",NBC Sports now
 https://d4whmvwm0rdvi.cloudfront.net/manifest/3fec3e5cac39a52b2132f9c66c83dae043dc17d4/prod_default_xumo-nbcu-linear/a7405ebf-63e6-4c18-ae89-fbcfe0aa7db9/4.m3u8
 
-#EXTINF:-1 tvg-id="TNTSports1" tvg-name="TNT Sports One UK" group-title="Hilay TV",TNT Sports One UK
+#EXTINF:-1 tvg-id="TNTSports1" tvg-name="TNT Sports One UK" group-title="Curious Pear",TNT Sports One UK
 http://primestreams.tv:826/live/SF11/vulwBvtfo9/110708.ts
 
-#EXTINF:-1 tvg-id="TNTSports2" tvg-name="TNT Sports Two UK" group-title="Hilay TV",TNT Sports Two UK
+#EXTINF:-1 tvg-id="TNTSports2" tvg-name="TNT Sports Two UK" group-title="Curious Pear",TNT Sports Two UK
 http://primestreams.tv/live/SF11/vulwBvtfo9/89213.ts
 
-#EXTINF:-1 tvg-id="TNTSports3" tvg-name="TNT Sports Three UK" group-title="Hilay TV",TNT Sports Three UK
+#EXTINF:-1 tvg-id="TNTSports3" tvg-name="TNT Sports Three UK" group-title="Curious Pear",TNT Sports Three UK
 http://primestreams.tv/live/SF11/vulwBvtfo9/89212.ts
 
-#EXTINF:-1 tvg-id="TNTSports4" tvg-name="TNT Sports Four" group-title="Hilay TV",TNT Sports Four
+#EXTINF:-1 tvg-id="TNTSports4" tvg-name="TNT Sports Four" group-title="Curious Pear",TNT Sports Four
 http://xplatinmedia.com:8080/CarlosIPTV/qFRvx7lHDCXjUXiov5zP8b95cVM2np/93693
 
-#EXTINF:-1 tvg-id="USA" tvg-name="USA Network East" group-title="Hilay TV",USA Network East
+#EXTINF:-1 tvg-id="USA" tvg-name="USA Network East" group-title="Curious Pear",USA Network East
 http://fl1.moveonjoy.com/USA_NETWORK/index.m3u8
 
-#EXTINF:-1 tvg-id="ESPN" tvg-name="ESPN" group-title="Hilay TV",ESPN
+#EXTINF:-1 tvg-id="ESPN" tvg-name="ESPN" group-title="Curious Pear",ESPN
 http://41.205.93.154/ESPN/index.m3u8
 
-#EXTINF:-1 tvg-id="ESPN2" tvg-name="ESPN 2" group-title="Hilay TV",ESPN 2
+#EXTINF:-1 tvg-id="ESPN2" tvg-name="ESPN 2" group-title="Curious Pear",ESPN 2
 http://fl2.moveonjoy.com/ESPN_2/index.m3u8
 
-#EXTINF:-1 tvg-id="ESPNU" tvg-name="ESPN U" group-title="Hilay TV",ESPN U
+#EXTINF:-1 tvg-id="ESPNU" tvg-name="ESPN U" group-title="Curious Pear",ESPN U
 http://fl2.moveonjoy.com/ESPN_U/index.m3u8
 
-#EXTINF:-1 tvg-id="ESPNNews" tvg-name="ESPN NEWS" group-title="Hilay TV",ESPN NEWS
+#EXTINF:-1 tvg-id="ESPNNews" tvg-name="ESPN NEWS" group-title="Curious Pear",ESPN NEWS
 http://fl3.moveonjoy.com/ESPN_NEWS/index.m3u8
 
-#EXTINF:-1 tvg-id="FoxSports1" tvg-name="Fox Sports One" group-title="Hilay TV",Fox Sports One
+#EXTINF:-1 tvg-id="FoxSports1" tvg-name="Fox Sports One" group-title="Curious Pear",Fox Sports One
 http://212.102.60.10/FOX_Sports_1/index.m3u8
 
-#EXTINF:-1 tvg-id="TennisCh" tvg-name="Tennis Channel" group-title="Hilay TV",Tennis Channel
+#EXTINF:-1 tvg-id="TennisCh" tvg-name="Tennis Channel" group-title="Curious Pear",Tennis Channel
 https://tennischannel-int-samsunguk.amagi.tv/playlist.m3u8
 
-#EXTINF:-1 tvg-id="CBSN" tvg-name="CBS Sports Network" group-title="Hilay TV",CBS Sports Network
+#EXTINF:-1 tvg-id="CBSN" tvg-name="CBS Sports Network" group-title="Curious Pear",CBS Sports Network
 https://a1xs.vip/rs/live/SF11/vulwBvtfo9/99477.ts
 
-#EXTINF:-1 tvg-id="realmadrid" tvg-name="Real Madrid TV" group-title="Hilay TV",Real Madrid TV
+#EXTINF:-1 tvg-id="realmadrid" tvg-name="Real Madrid TV" group-title="Curious Pear",Real Madrid TV
 https://dbrb49pjoymg4.cloudfront.net/manifest/3fec3e5cac39a52b2132f9c66c83dae043dc17d4/prod_default_xumo-ams-aws/ac6366c8-78e1-4c09-bb3f-e27c4a2a51cc/5.m3u8
 
-#EXTINF:-1 tvg-id="ESPNDeportes" tvg-name="ESPN Deportes" group-title="Hilay TV",ESPN Deportes
+#EXTINF:-1 tvg-id="ESPNDeportes" tvg-name="ESPN Deportes" group-title="Curious Pear",ESPN Deportes
 http://190.92.10.66:4000/play/a003/index.m3u8
 
-#EXTINF:-1 tvg-id="Babyfirst" tvg-name="Baby First" group-title="Hilay TV",Baby First
+#EXTINF:-1 tvg-id="Babyfirst" tvg-name="Baby First" group-title="Curious Pear",Baby First
 https://streams2.sofast.tv/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/c8d16110-566c-4e95-a1df-55d175e9e201/d3bb2ef6-3e31-4ee6-8697-944ecd3a029d/1.m3u8
 
-#EXTINF:-1 tvg-id="ToonGoggles" tvg-name="Toon Goggles" group-title="Hilay TV",Toon Goggles
+#EXTINF:-1 tvg-id="ToonGoggles" tvg-name="Toon Goggles" group-title="Curious Pear",Toon Goggles
 https://dbrb49pjoymg4.cloudfront.net/manifest/3fec3e5cac39a52b2132f9c66c83dae043dc17d4/prod_default_xumo-ams-aws/69760ecf-0fc0-4ef7-8311-f917e89a2294/0.m3u8
 
-#EXTINF:-1 tvg-id="Cartoonnetwork" tvg-name="Cartoon Network US" group-title="Hilay TV",Cartoon Network US
+#EXTINF:-1 tvg-id="Cartoonnetwork" tvg-name="Cartoon Network US" group-title="Curious Pear",Cartoon Network US
 https://fl1.moveonjoy.com/CARTOON_NETWORK/index.m3u8
 
-#EXTINF:-1 tvg-id="Moonbug" tvg-name="Moonbug kids" group-title="Hilay TV",Moonbug kids
+#EXTINF:-1 tvg-id="Moonbug" tvg-name="Moonbug kids" group-title="Curious Pear",Moonbug kids
 https://moonbug-rokuus.amagi.tv/playlist.m3u8
 
-#EXTINF:-1 tvg-id="Disney" tvg-name="Disney Channel" group-title="Hilay TV",Disney Channel
+#EXTINF:-1 tvg-id="Disney" tvg-name="Disney Channel" group-title="Curious Pear",Disney Channel
 https://realsport.scalecdn.co/hankstreamer/sYWcksogwN/3630
 
-#EXTINF:-1 tvg-id="DisneyJr" tvg-name="Disney Junior" group-title="Hilay TV",Disney Junior
+#EXTINF:-1 tvg-id="DisneyJr" tvg-name="Disney Junior" group-title="Curious Pear",Disney Junior
 http://fl3.moveonjoy.com/DISNEY_JR/index.m3u8
 
-#EXTINF:-1 tvg-id="DisneyXD" tvg-name="Disney XD" group-title="Hilay TV",Disney XD
+#EXTINF:-1 tvg-id="DisneyXD" tvg-name="Disney XD" group-title="Curious Pear",Disney XD
 http://fl3.moveonjoy.com/DISNEY_XD/index.m3u8
 
-#EXTINF:-1 tvg-id="Boomerang" tvg-name="Boomerang" group-title="Hilay TV",Boomerang
+#EXTINF:-1 tvg-id="Boomerang" tvg-name="Boomerang" group-title="Curious Pear",Boomerang
 http://fl3.moveonjoy.com/BOOMERANG/index.m3u8
 
-#EXTINF:-1 tvg-id="Nickelodeon" tvg-name="Nickelodeon" group-title="Hilay TV",Nickelodeon
+#EXTINF:-1 tvg-id="Nickelodeon" tvg-name="Nickelodeon" group-title="Curious Pear",Nickelodeon
 http://23.237.104.106:8080/USA_NICKELODEON/index.m3u8
 
-#EXTINF:-1 tvg-id="Nicktoons" tvg-name="Nicktoons US" group-title="Hilay TV",Nicktoons US
+#EXTINF:-1 tvg-id="Nicktoons" tvg-name="Nicktoons US" group-title="Curious Pear",Nicktoons US
 http://fl1.moveonjoy.com/NICKTOONS/index.m3u8
 
-#EXTINF:-1 tvg-id="NickJr" tvg-name="Nick Jr US" group-title="Hilay TV",Nick Jr US
+#EXTINF:-1 tvg-id="NickJr" tvg-name="Nick Jr US" group-title="Curious Pear",Nick Jr US
 http://primestreams.tv:826/live/SF11/vulwBvtfo9/98815.ts
 
-#EXTINF:-1 tvg-id="PBSKids" tvg-name="PBS Kids" group-title="Hilay TV",PBS Kids
+#EXTINF:-1 tvg-id="PBSKids" tvg-name="PBS Kids" group-title="Curious Pear",PBS Kids
 https://2-fss-2.streamhoster.com/pl_140/amlst:200914-1298290/playlist.m3u8
 
-#EXTINF:-1 tvg-id="HBOfamily" tvg-name="HBO Family" group-title="Hilay TV",HBO Family
+#EXTINF:-1 tvg-id="HBOfamily" tvg-name="HBO Family" group-title="Curious Pear",HBO Family
 http://fl3.moveonjoy.com/HBO_FAMILY/index.m3u8
 
-#EXTINF:-1 tvg-id="HBO" tvg-name="HBO" group-title="Hilay TV",HBO
+#EXTINF:-1 tvg-id="HBO" tvg-name="HBO" group-title="Curious Pear",HBO
 http://fl3.moveonjoy.com/HBO/index.m3u8
 
-#EXTINF:-1 tvg-id="HBOComedy" tvg-name="HBO Comedy" group-title="Hilay TV",HBO Comedy
+#EXTINF:-1 tvg-id="HBOComedy" tvg-name="HBO Comedy" group-title="Curious Pear",HBO Comedy
 http://fl3.moveonjoy.com/HBO_COMEDY/index.m3u8
 
-#EXTINF:-1 tvg-id="HBOZone" tvg-name="HBO Zone" group-title="Hilay TV",HBO Zone
+#EXTINF:-1 tvg-id="HBOZone" tvg-name="HBO Zone" group-title="Curious Pear",HBO Zone
 http://fl3.moveonjoy.com/HBO_ZONE/index.m3u8
 
-#EXTINF:-1 tvg-id="HBO2" tvg-name="HBO 2" group-title="Hilay TV",HBO 2
+#EXTINF:-1 tvg-id="HBO2" tvg-name="HBO 2" group-title="Curious Pear",HBO 2
 http://fl3.moveonjoy.com/HBO_2/index.m3u8
 
-#EXTINF:-1 tvg-id="boxgamers" tvg-name="Box Gamers" group-title="Hilay TV",Box Gamers
+#EXTINF:-1 tvg-id="boxgamers" tvg-name="Box Gamers" group-title="Curious Pear",Box Gamers
 https://dr2t9f8nivbc6.cloudfront.net/hls/F63M6BQ/1E68BCFFE40D/m.m3u8
 
-#EXTINF:-1 tvg-id="9xm" tvg-name="9xM India" group-title="Hilay TV",9xM India
+#EXTINF:-1 tvg-id="9xm" tvg-name="9xM India" group-title="Curious Pear",9xM India
 https://d35j504z0x2vu2.cloudfront.net/v1/manifest/0bc8e8376bd8417a1b6761138aa41c26c7309312/9xm/1123fa3f-5463-46e1-b560-87595d8bde62/3.m3u8
 
-#EXTINF:-1 tvg-id="humhd" tvg-name="Hum HD" group-title="Hilay TV",Hum HD
+#EXTINF:-1 tvg-id="humhd" tvg-name="Hum HD" group-title="Curious Pear",Hum HD
 http://tv.cloudcdn.me:80/live.ts?channelId=424&uid=16068&deviceMac=00:1A:79:ED:10:29
 
-#EXTINF:-1 tvg-id="foxsp2" tvg-name="Fox Sports Two" group-title="Hilay TV",Fox Sports Two
+#EXTINF:-1 tvg-id="foxsp2" tvg-name="Fox Sports Two" group-title="Curious Pear",Fox Sports Two
 http://fortv.cc:8080/live/cQnq6G/652882/1847.m3u8
 
-#EXTINF:-1 tvg-id="astrogrand" tvg-name="Astro Grandstand" group-title="Hilay TV",Astro Grandstand
+#EXTINF:-1 tvg-id="astrogrand" tvg-name="Astro Grandstand" group-title="Curious Pear",Astro Grandstand
 http://103.140.3.18:7860/ddy/123
 
-#EXTINF:-1 tvg-id="kloopy" tvg-name="Kaloopy TV" group-title="Hilay TV",Kaloopy TV
+#EXTINF:-1 tvg-id="kloopy" tvg-name="Kaloopy TV" group-title="Curious Pear",Kaloopy TV
 https://d35j504z0x2vu2.cloudfront.net/v1/manifest/0bc8e8376bd8417a1b6761138aa41c26c7309312/kaloopy/df2e1f8e-4f47-41b0-bd26-626e8a63caf2/2.m3u8
 
-#EXTINF:-1 tvg-id="stingrayhitlist" tvg-name="Stinngray Hitlist" group-title="Hilay TV",Stinngray Hitlist
+#EXTINF:-1 tvg-id="stingrayhitlist" tvg-name="Stinngray Hitlist" group-title="Curious Pear",Stinngray Hitlist
 https://d35j504z0x2vu2.cloudfront.net/v1/manifest/0bc8e8376bd8417a1b6761138aa41c26c7309312/stingray-hit-list/ee0abb73-73b5-4505-99c2-0f75f800d2c3/0.m3u8
 
-#EXTINF:-1 tvg-id="b4umusic" tvg-name="B4U Music India" group-title="Hilay TV",B4U Music India
+#EXTINF:-1 tvg-id="b4umusic" tvg-name="B4U Music India" group-title="Curious Pear",B4U Music India
 http://175.107.244.52:4457/play/a059/index.m3u8
 
-#EXTINF:-1 tvg-id="b4umovies" tvg-name="B4U Movies" group-title="Hilay TV",B4U Movies
+#EXTINF:-1 tvg-id="b4umovies" tvg-name="B4U Movies" group-title="Curious Pear",B4U Movies
 https://amg00877-b4unew-amg00877c2-xiaomi-in-5489.playouts.now.amagi.tv/1080p/index.m3u8
 
-#EXTINF:-1 tvg-id="astrouhd" tvg-name="Astro UHD" group-title="Hilay TV",Astro UHD
+#EXTINF:-1 tvg-id="astrouhd" tvg-name="Astro UHD" group-title="Curious Pear",Astro UHD
 https://s1.tvm4a1.cfd/astro/astrosportuhd/AKTV.m3u8
 
-#EXTINF:-1 tvg-id="usawest" tvg-name="USA Network West" group-title="Hilay TV",USA Network West
+#EXTINF:-1 tvg-id="usawest" tvg-name="USA Network West" group-title="Curious Pear",USA Network West
 http://fl1.moveonjoy.com/USA_NETWORK/index.m3u8
 
-#EXTINF:-1 tvg-id="astropl1" tvg-name="Astro Premier League 1" group-title="Hilay TV",Astro Premier League 1
+#EXTINF:-1 tvg-id="astropl1" tvg-name="Astro Premier League 1" group-title="Curious Pear",Astro Premier League 1
 http://217.156.66.36:8080/c77a5914/cd600797bc/146068
 
-#EXTINF:-1 tvg-id="pltv" tvg-name="Premier League TV" group-title="Hilay TV",Premier League TV
+#EXTINF:-1 tvg-id="pltv" tvg-name="Premier League TV" group-title="Curious Pear",Premier League TV
 http://primestreams.tv/live/SF11/vulwBvtfo9/118592.ts
 
-#EXTINF:-1 tvg-id="hgtv" tvg-name="HGTV" group-title="Hilay TV",HGTV
+#EXTINF:-1 tvg-id="hgtv" tvg-name="HGTV" group-title="Curious Pear",HGTV
 http://fl3.moveonjoy.com/HGTV/index.m3u8
 
-#EXTINF:-1 tvg-id="rockaction" tvg-name="Rock Action" group-title="Hilay TV",Rock Action
+#EXTINF:-1 tvg-id="rockaction" tvg-name="Rock Action" group-title="Curious Pear",Rock Action
 https://s1.tvm4a1.cfd/aktv/rockaction/AKTV.m3u8
 
-#EXTINF:-1 tvg-id="france24" tvg-name="France 24" group-title="Hilay TV",France 24
+#EXTINF:-1 tvg-id="france24" tvg-name="France 24" group-title="Curious Pear",France 24
 https://live.france24.com/hls/live/2037218/F24_EN_HI_HLS/master_5000.m3u8
 
-#EXTINF:-1 tvg-id="cgtn" tvg-name="CGTN" group-title="Hilay TV",CGTN
+#EXTINF:-1 tvg-id="cgtn" tvg-name="CGTN" group-title="Curious Pear",CGTN
 https://english-livebkali.cgtn.com/live/encgtn_0.m3u8
 
-#EXTINF:-1 tvg-id="arydigital" tvg-name="Ary Digital HD" group-title="Hilay TV",Ary Digital HD
+#EXTINF:-1 tvg-id="arydigital" tvg-name="Ary Digital HD" group-title="Curious Pear",Ary Digital HD
 http://125.209.88.166:45793/BRN/AryDigital.stream/playlist.m3u8
 
-#EXTINF:-1 tvg-id="humsitaray" tvg-name="Hum HD" group-title="Hilay TV",Hum HD
+#EXTINF:-1 tvg-id="humsitaray" tvg-name="Hum HD" group-title="Curious Pear",Hum HD
 https://portal-to-m3u-07.iptv07india.workers.dev/?id=5548
 
-#EXTINF:-1 tvg-id="geoent" tvg-name="Geo Entertainment HD" group-title="Hilay TV",Geo Entertainment HD
+#EXTINF:-1 tvg-id="geoent" tvg-name="Geo Entertainment HD" group-title="Curious Pear",Geo Entertainment HD
 https://portal-to-m3u-07.iptv07india.workers.dev/?id=5534
 
-#EXTINF:-1 tvg-id="sonymovie" tvg-name="Sony Movie Channel" group-title="Hilay TV",Sony Movie Channel
+#EXTINF:-1 tvg-id="sonymovie" tvg-name="Sony Movie Channel" group-title="Curious Pear",Sony Movie Channel
 http://fl3.moveonjoy.com/Sony_Movie_Channel/index.m3u8
 
-#EXTINF:-1 tvg-id="param" tvg-name="Paramount Network" group-title="Hilay TV",Paramount Network
+#EXTINF:-1 tvg-id="param" tvg-name="Paramount Network" group-title="Curious Pear",Paramount Network
 http://fl3.moveonjoy.com/PARAMOUNT_NETWORK/index.m3u8
 
-#EXTINF:-1 tvg-id="boxingtv" tvg-name="Boxing TV" group-title="Hilay TV",Boxing TV
+#EXTINF:-1 tvg-id="boxingtv" tvg-name="Boxing TV" group-title="Curious Pear",Boxing TV
 https://d35j504z0x2vu2.cloudfront.net/v1/manifest/0bc8e8376bd8417a1b6761138aa41c26c7309312/boxing-tv/66dd353b-af50-4df2-9e77-bd4c336b0bbe/4.m3u8
 
-#EXTINF:-1 tvg-id="impactwrestling" tvg-name="TNA Impact Wrestling" group-title="Hilay TV",TNA Impact Wrestling
+#EXTINF:-1 tvg-id="impactwrestling" tvg-name="TNA Impact Wrestling" group-title="Curious Pear",TNA Impact Wrestling
 https://dbrb49pjoymg4.cloudfront.net/v1/master/3fec3e5cac39a52b2132f9c66c83dae043dc17d4/prod_default_xumo-ams-aws/master.m3u8?ads.xumo_channelId=99991341
 
-#EXTINF:-1 tvg-id="billiard" tvg-name="Billiard TV" group-title="Hilay TV",Billiard TV
+#EXTINF:-1 tvg-id="billiard" tvg-name="Billiard TV" group-title="Curious Pear",Billiard TV
 https://d35j504z0x2vu2.cloudfront.net/v1/manifest/0bc8e8376bd8417a1b6761138aa41c26c7309312/billiard-tv/632693b0-cd8f-4c25-b609-531d2ecd1d4e/4.m3u8
 
-#EXTINF:-1 tvg-id="powernation" tvg-name="PowerNation" group-title="Hilay TV",PowerNation
+#EXTINF:-1 tvg-id="powernation" tvg-name="PowerNation" group-title="Curious Pear",PowerNation
 https://dbrb49pjoymg4.cloudfront.net/v1/master/3fec3e5cac39a52b2132f9c66c83dae043dc17d4/prod_default_xumo-ams-aws/master.m3u8?ads.xumo_channelId=99991291
 
-#EXTINF:-1 tvg-id="speedvision" tvg-name="Speedvision" group-title="Hilay TV",Speedvision
+#EXTINF:-1 tvg-id="speedvision" tvg-name="Speedvision" group-title="Curious Pear",Speedvision
 https://dbrb49pjoymg4.cloudfront.net/10001/99951268/hls/playlist.m3u8?ads.xumo_channelId=99951268
 
-#EXTINF:-1 tvg-id="myzen" tvg-name="MyZen TV" group-title="Hilay TV",MyZen TV
+#EXTINF:-1 tvg-id="myzen" tvg-name="MyZen TV" group-title="Curious Pear",MyZen TV
 http://cdnx1.plusx.tv:4000/myZen/mono.m3u8?token=b94a1c8d542f65ae6ad061f16c3830523333
 
-#EXTINF:-1 tvg-id="discovery" tvg-name="Discovery Channel" group-title="Hilay TV",Discovery Channel
+#EXTINF:-1 tvg-id="discovery" tvg-name="Discovery Channel" group-title="Curious Pear",Discovery Channel
 https://a1xs.vip/1000033
 
-#EXTINF:-1 tvg-id="discoveryscience" tvg-name="Discovery Science" group-title="Hilay TV",Discovery Science
+#EXTINF:-1 tvg-id="discoveryscience" tvg-name="Discovery Science" group-title="Curious Pear",Discovery Science
 http://fl3.moveonjoy.com/Discovery_Science/index.m3u8
 
-#EXTINF:-1 tvg-id="investigationdiscovery" tvg-name="Investigation Discovery" group-title="Hilay TV",Investigation Discovery
+#EXTINF:-1 tvg-id="investigationdiscovery" tvg-name="Investigation Discovery" group-title="Curious Pear",Investigation Discovery
 http://fl3.moveonjoy.com/INVESTIGATION_DISCOVERY/index.m3u8
 
-#EXTINF:-1 tvg-id="discoverylife" tvg-name="Discovery Life" group-title="Hilay TV",Discovery Life
+#EXTINF:-1 tvg-id="discoverylife" tvg-name="Discovery Life" group-title="Curious Pear",Discovery Life
 http://fl3.moveonjoy.com/DISCOVERY_LIFE/index.m3u8
 
-#EXTINF:-1 tvg-id="tlc" tvg-name="Discovery TLC" group-title="Hilay TV",Discovery TLC
+#EXTINF:-1 tvg-id="tlc" tvg-name="Discovery TLC" group-title="Curious Pear",Discovery TLC
 http://fl3.moveonjoy.com/TLC/index.m3u8
 
-#EXTINF:-1 tvg-id="animalplanet" tvg-name="Discovery Animal Planet" group-title="Hilay TV",Discovery Animal Planet
+#EXTINF:-1 tvg-id="animalplanet" tvg-name="Discovery Animal Planet" group-title="Curious Pear",Discovery Animal Planet
 http://fl3.moveonjoy.com/Animal_Planet/index.m3u8
 
-#EXTINF:-1 tvg-id="discoveryfamily" tvg-name="Discovery Family Channel" group-title="Hilay TV",Discovery Family Channel
+#EXTINF:-1 tvg-id="discoveryfamily" tvg-name="Discovery Family Channel" group-title="Curious Pear",Discovery Family Channel
 http://fl3.moveonjoy.com/DISCOVERY_FAMILY_CHANNEL/index.m3u8
 
-#EXTINF:-1 tvg-id="history" tvg-name="History Channel" group-title="Hilay TV",History Channel
+#EXTINF:-1 tvg-id="history" tvg-name="History Channel" group-title="Curious Pear",History Channel
 http://fl1.moveonjoy.com/history_channel/index.m3u8
 
-#EXTINF:-1 tvg-id="smithsonian" tvg-name="Smithsonian Channel" group-title="Hilay TV",Smithsonian Channel
+#EXTINF:-1 tvg-id="smithsonian" tvg-name="Smithsonian Channel" group-title="Curious Pear",Smithsonian Channel
 http://stitcher-ipv4.pluto.tv/v1/stitch/embed/hls/channel/5f21ea08007a49000762d349/master.m3u8?deviceType=samsung-tvplus&deviceMake=samsung&deviceModel=samsung&deviceVersion=unknown&appVersion=unknown&deviceLat=0&deviceLon=0&deviceDNT=%7BTARGETOPT%7D&deviceId=%7BPSID%7D&advertisingId=%7BPSID%7D&us_privacy=1YNY&samsung_app_domain=%7BAPP_DOMAIN%7D&samsung_app_name=%7BAPP_NAME%7D&profileLimit=&profileFloor=&embedPartner=samsung-tvplus
 
-#EXTINF:-1 tvg-id="travelch" tvg-name="Travel Channel" group-title="Hilay TV",Travel Channel
+#EXTINF:-1 tvg-id="travelch" tvg-name="Travel Channel" group-title="Curious Pear",Travel Channel
 http://fl3.moveonjoy.com/Travel_Channel/index.m3u8
 
-#EXTINF:-1 tvg-id="abcaustralia" tvg-name="Australia News" group-title="Hilay TV",Australia News
+#EXTINF:-1 tvg-id="abcaustralia" tvg-name="Australia News" group-title="Curious Pear",Australia News
 https://abc-news-dmd-streams-1.akamaized.net/out/v1/701126012d044971b3fa89406a440133/index.m3u8
 
-#EXTINF:-1 tvg-id="hallmarkfamily" tvg-name="Hallmark Family" group-title="Hilay TV",Hallmark Family
+#EXTINF:-1 tvg-id="hallmarkfamily" tvg-name="Hallmark Family" group-title="Curious Pear",Hallmark Family
 http://fl3.moveonjoy.com/HALLMARK_DRAMA/index.m3u8
 
-#EXTINF:-1 tvg-id="swar" tvg-name="Swarnavahini" group-title="Hilay TV",Swarnavahini
+#EXTINF:-1 tvg-id="swar" tvg-name="Swarnavahini" group-title="Curious Pear",Swarnavahini
 https://jk3lz8xklw79-hls-live.5centscdn.com/live/6226f7cbe59e99a90b5cef6f94f966fd.sdp/chunks.m3u8
 
-#EXTINF:-1 tvg-id="skybundesliga" tvg-name="Sky Sports Bundesliga" group-title="Hilay TV",Sky Sports Bundesliga
+#EXTINF:-1 tvg-id="skybundesliga" tvg-name="Sky Sports Bundesliga" group-title="Curious Pear",Sky Sports Bundesliga
 https://a1xs.vip/120002
 
-#EXTINF:-1 tvg-id="sportsfirst" tvg-name="Sports First TV" group-title="Hilay TV",Sports First TV
+#EXTINF:-1 tvg-id="sportsfirst" tvg-name="Sports First TV" group-title="Curious Pear",Sports First TV
 https://d2396zb8liu8hs.cloudfront.net/v1/manifest/9d062541f2ff39b5c0f48b743c6411d25f62fc25/DistroTV-MuxIP-SportsFirstTV/2397e69f-024d-482d-818c-d2fb92ecaf1c/0.m3u8
 
-#EXTINF:-1 tvg-id="unbeaten" tvg-name="Unbeaten" group-title="Hilay TV",Unbeaten
+#EXTINF:-1 tvg-id="unbeaten" tvg-name="Unbeaten" group-title="Curious Pear",Unbeaten
 https://unbeaten-tcl.amagi.tv/playlist.m3u8
 
-#EXTINF:-1 tvg-id="foodnetwork" tvg-name="Food Network" group-title="Hilay TV",Food Network
+#EXTINF:-1 tvg-id="foodnetwork" tvg-name="Food Network" group-title="Curious Pear",Food Network
 http://fl3.moveonjoy.com/FOOD_NETWORK/index.m3u8
 
-#EXTINF:-1 tvg-id="tntultimate" tvg-name="TNT Sports Ultimate UHD" group-title="Hilay TV",TNT Sports Ultimate UHD
+#EXTINF:-1 tvg-id="tntultimate" tvg-name="TNT Sports Ultimate UHD" group-title="Curious Pear",TNT Sports Ultimate UHD
 http://xc.tvset.top/live/DennisZurrieqpersonal/h73UbA7rwkbR/163577.ts
 
-#EXTINF:-1 tvg-id="malikutv" tvg-name="Maliku TV" group-title="Hilay TV",Maliku TV
+#EXTINF:-1 tvg-id="malikutv" tvg-name="Maliku TV" group-title="Curious Pear",Maliku TV
 https://hugh.cdn.rumble.cloud/live/3fms19g4/slot-17/41se-mxdm/chunklist_DVR.m3u8
 
-#EXTINF:-1 tvg-id="ddsports" tvg-name="DD Sports" group-title="Hilay TV",DD Sports
+#EXTINF:-1 tvg-id="ddsports" tvg-name="DD Sports" group-title="Curious Pear",DD Sports
 https://d3eyhgoylams0m.cloudfront.net/v1/master/93ce20f0f52760bf38be911ff4c91ed02aa2fd92/ed7bd2c7-8d10-4051-b397-2f6b90f99acb/index.m3u8?aws.sessionId=0abc6b14-c563-4851-a49b-4329f9d22be4
 
-#EXTINF:-1 tvg-id="zeebollywood" tvg-name="Bollywood HD" group-title="Hilay TV",Bollywood HD
+#EXTINF:-1 tvg-id="zeebollywood" tvg-name="Bollywood HD" group-title="Curious Pear",Bollywood HD
 https://d35j504z0x2vu2.cloudfront.net/v1/manifest/0bc8e8376bd8417a1b6761138aa41c26c7309312/bollywood-hd/e0b51ae3-d393-422b-8585-68a582bbb5bb/0.m3u8
 
-#EXTINF:-1 tvg-id="zeeclassic" tvg-name="BollyWood Classic" group-title="Hilay TV",BollyWood Classic
+#EXTINF:-1 tvg-id="zeeclassic" tvg-name="BollyWood Classic" group-title="Curious Pear",BollyWood Classic
 https://d35j504z0x2vu2.cloudfront.net/v1/manifest/0bc8e8376bd8417a1b6761138aa41c26c7309312/bollywood-classic/6c72358f-a68d-4108-a5ce-c2745ef6d526/0.m3u8
 
-#EXTINF:-1 tvg-id="goltv" tvg-name="Women Sports Network" group-title="Hilay TV",Women Sports Network
+#EXTINF:-1 tvg-id="goltv" tvg-name="Women Sports Network" group-title="Curious Pear",Women Sports Network
 https://csm-e-eb.csm.tubi.video/csm/extlive/tubiprd01,Fast-Studios-Womens-Sports.m3u8
 
-#EXTINF:-1 tvg-id="cloudflaretv" tvg-name="Cloudflare TV" group-title="Hilay TV",Cloudflare TV
+#EXTINF:-1 tvg-id="cloudflaretv" tvg-name="Cloudflare TV" group-title="Curious Pear",Cloudflare TV
 https://cloudflare.tv/hls/live.m3u8
 
-#EXTINF:-1 tvg-id="mutv" tvg-name="Manchester United TV" group-title="Hilay TV",Manchester United TV
+#EXTINF:-1 tvg-id="mutv" tvg-name="Manchester United TV" group-title="Curious Pear",Manchester United TV
 https://bcovlive-a.akamaihd.net/r2d2c4ca5bf57456fb1d16255c1a535c8/eu-west-1/6058004203001/playlist.m3u8
 
-#EXTINF:-1 tvg-id="staruk" tvg-name="Star Plus UK" group-title="Hilay TV",Star Plus UK
+#EXTINF:-1 tvg-id="staruk" tvg-name="Star Plus UK" group-title="Curious Pear",Star Plus UK
 http://s5.alltvfree.com:8081/live/StarPlus/chunks.m3u8
 
-#EXTINF:-1 tvg-id="zeeuk" tvg-name="Shemaroo Bollywood" group-title="Hilay TV",Shemaroo Bollywood
+#EXTINF:-1 tvg-id="zeeuk" tvg-name="Shemaroo Bollywood" group-title="Curious Pear",Shemaroo Bollywood
 https://d35j504z0x2vu2.cloudfront.net/v1/manifest/0bc8e8376bd8417a1b6761138aa41c26c7309312/shemaroo-bollywood/bcc176a6-d3b4-4044-835b-d2c65884bf8d/3.m3u8
 
-#EXTINF:-1 tvg-id="vsportuhd" tvg-name="VSport UltraHD" group-title="Hilay TV",VSport UltraHD
+#EXTINF:-1 tvg-id="skysportsfootball" tvg-name="Sky Sports Football" group-title="Curious Pear",Sky Sports Football
+https://a1xs.vip/rs/live/SF11/vulwBvtfo9/98781.ts
+
+#EXTINF:-1 tvg-id="skypremierleaguehd" tvg-name="Sky Premier League HD" group-title="Curious Pear",Sky Premier League HD
+https://maldivesn.net/hilaytv/skysportspremierleague
+
+#EXTINF:-1 tvg-id="vsportuhd" tvg-name="VSport UltraHD" group-title="Curious Pear",VSport UltraHD
 https://a1xs.vip/9000013
 
-#EXTINF:-1 tvg-id="skysportslaliga" tvg-name="Sky Sports LaLiga" group-title="Hilay TV",Sky Sports LaLiga
+#EXTINF:-1 tvg-id="skysportslaliga" tvg-name="Sky Sports LaLiga" group-title="Curious Pear",Sky Sports LaLiga
 http://190.92.10.66:4000/play/a001/index.m3u8
 
-#EXTINF:-1 tvg-id="tensports" tvg-name="Ten Sports HD" group-title="Hilay TV",Ten Sports HD
+#EXTINF:-1 tvg-id="tensports" tvg-name="Ten Sports HD" group-title="Curious Pear",Ten Sports HD
 http://125.209.88.166:45793/BRN/TenSports.stream/playlist.m3u8
 
-#EXTINF:-1 tvg-id="redbulltv" tvg-name="Redbull TV" group-title="Hilay TV",Redbull TV
+#EXTINF:-1 tvg-id="redbulltv" tvg-name="Redbull TV" group-title="Curious Pear",Redbull TV
 https://rbmn-live.akamaized.net/hls/live/590964/BoRB-AT/master_3360.m3u8
 
-#EXTINF:-1 tvg-id="events1" tvg-name="LIVE EVENTS 1" group-title="Hilay TV",LIVE EVENTS 1
+#EXTINF:-1 tvg-id="events1" tvg-name="LIVE EVENTS 1" group-title="Curious Pear",LIVE EVENTS 1
 https://maldivesn.net/hilaytv/rushsports
 
-#EXTINF:-1 tvg-id="events2" tvg-name="LIVE EVENTS 2" group-title="Hilay TV",LIVE EVENTS 2
+#EXTINF:-1 tvg-id="events2" tvg-name="LIVE EVENTS 2" group-title="Curious Pear",LIVE EVENTS 2
 https://maldivesn.net/hilaytv/itv1
 
-#EXTINF:-1 tvg-id="babyrhmes" tvg-name="Baby Rhymes" group-title="Hilay TV",Baby Rhymes
+#EXTINF:-1 tvg-id="babyrhmes" tvg-name="Baby Rhymes" group-title="Curious Pear",Baby Rhymes
 http://45.148.145.57/rhymes247_1/index.m3u8
 
-#EXTINF:-1 tvg-id="cookingch" tvg-name="Cooking Channel" group-title="Hilay TV",Cooking Channel
+#EXTINF:-1 tvg-id="cookingch" tvg-name="Cooking Channel" group-title="Curious Pear",Cooking Channel
 http://fl3.moveonjoy.com/COOKING_CHANNEL/index.m3u8
 
-#EXTINF:-1 tvg-id="arabica" tvg-name="Arabica TV" group-title="Hilay TV",Arabica TV
+#EXTINF:-1 tvg-id="tbs" tvg-name="TBS" group-title="Curious Pear",TBS
+http://fl3.moveonjoy.com/TBS/index.m3u8
+
+#EXTINF:-1 tvg-id="tnt" tvg-name="TNT" group-title="Curious Pear",TNT
+http://primestreams.tv/live/SF11/vulwBvtfo9/96162.ts
+
+#EXTINF:-1 tvg-id="majilistv" tvg-name="Majilis TV" group-title="Curious Pear",Majilis TV
+https://www.youtube.com/watch?v=0Xme1BFKI_E
+
+#EXTINF:-1 tvg-id="unwebtv" tvg-name="UN Web TV" group-title="Curious Pear",UN Web TV
+https://cdnapi.kaltura.com/p/2503451/sp/250345100/playManifest/entryId/1_gb6tjmle/protocol/https/format/applehttp/a.m3u8
+
+#EXTINF:-1 tvg-id="arabica" tvg-name="Arabica TV" group-title="Curious Pear",Arabica TV
 http://istream.binarywaves.com:8081/hls/arabica/playlist.m3u8
 
-#EXTINF:-1 tvg-id="axn" tvg-name="AXN" group-title="Hilay TV",AXN
+#EXTINF:-1 tvg-id="ch5" tvg-name="Channel 5" group-title="Curious Pear",Channel 5
+http://primestreams.tv/live/SF11/vulwBvtfo9/98847.ts
+
+#EXTINF:-1 tvg-id="axn" tvg-name="AXN" group-title="Curious Pear",AXN
 https://s1.tvm4a1.cfd/aktv/axn/AKTV.m3u8
 
-#EXTINF:-1 tvg-id="UltimateMusicChannel" tvg-name="The Ultimate Music Channel" group-title="Hilay TV",The Ultimate Music Channel
+#EXTINF:-1 tvg-id="partytymek" tvg-name="Party Tyme Karaoke" group-title="Curious Pear",Party Tyme Karaoke
+https://epg.provider.plex.tv/library/parts/5e20b730f2f8d5003d739db7-5eea605674085f0040ddc7ac/variant.m3u8?x-plex-token=f8pFHeyn6zHhsxgUQzpx&x-plex-advertising-identifier=&x-plex-client-identifier=d0817dbf-dd0c-4c6d-a292-958d7266fb79&x-plex-playback-id=p_f068fc3f-35cc-4abd-9121-6264f1d9c825&x-plex-playback-session-id=&x-plex-session-id=&x-plex-device=Windows&x-plex-device-name=Plex+Mediaverse&x-plex-advertising-donottrack=0&x-plex-drm=&x-plex-model=&x-plex-platform=Edge&x-plex-platform-version=138.0.0.0&x-plex-product=Plex+Mediaverse&x-plex-device-screen-resolution=&x-plex-device-vendor=&x-plex-version=&x-plex-provider-streaming-start=1751870021&url=69936d8d17b150ac49af1b933e72d7e8-b13e2de5a0642f70280fadfe1f94fd144d036952f199123414acbae3c30cb59f28112e2105f71449fcaf21a7115bebad7dce3d2b6cb6ce49dccb4aacf00034950ee42f107b7ba3ac848fc02628745c3eb4a33c00e9231f44149d1e2327330028
+
+#EXTINF:-1 tvg-id="raiitalia" tvg-name="Rai Italia" group-title="Curious Pear",Rai Italia
+https://ilglobotv-live.akamaized.net/channels/RAIItaliaSudAfrica/Live.m3u8
+
+#EXTINF:-1 tvg-id="ch4" tvg-name="Channel 4" group-title="Curious Pear",Channel 4
+http://primestreams.tv/live/SF11/vulwBvtfo9/98848.ts
+
+#EXTINF:-1 tvg-id="mendhuru" tvg-name="Mendhuru TV" group-title="Curious Pear",Mendhuru TV
+http://s5.alltvfree.com:8081/live/menduru/playlist.m3u8
+
+#EXTINF:-1 tvg-id="dazn" tvg-name="DAZN" group-title="Curious Pear",DAZN
+http://primestreams.tv/live/SF11/vulwBvtfo9/117378.ts
+
+#EXTINF:-1 tvg-id="nasatv" tvg-name="NASA TV" group-title="Curious Pear",NASA TV
+https://www.youtube.com/watch?v=DIgkvm2nmHc
+
+#EXTINF:-1 tvg-id="babytv" tvg-name="Baby TV" group-title="Curious Pear",Baby TV
+https://www.youtube.com/watch?v=sn8jPLM6Y9w
+
+#EXTINF:-1 tvg-id="ch5sin" tvg-name="MeWatch 5" group-title="Curious Pear",MeWatch 5
+https://s1.tvm4a1.cfd/aktv/channel5hd/AKTV.m3u8
+
+#EXTINF:-1 tvg-id="mrbean" tvg-name="Mr. Bean Anime" group-title="Curious Pear",Mr. Bean Anime
+https://amg00627-amg00627c28-rakuten-uk-3984.playouts.now.amagi.tv/playlist/amg00627-banijayfast-mrbeanukcc-rakutenuk/playlist.m3u8
+
+#EXTINF:-1 tvg-id="5minutecraft" tvg-name="Five Minutes Craft" group-title="Curious Pear",Five Minutes Craft
+https://epg.provider.plex.tv/library/parts/5e20b730f2f8d5003d739db7-63894c1965b848bf2c8a7800/variant.m3u8?x-plex-token=FtdD384SHvytYCMULVHM&x-plex-advertising-identifier=&x-plex-client-identifier=6a84848e-4b70-412c-a683-34f05430f4b0&x-plex-playback-id=p_53a6c9c4-a3e6-4d08-9b00-f1f4a16ed3ce&x-plex-playback-session-id=&x-plex-session-id=&x-plex-device=Windows&x-plex-device-name=Plex+Mediaverse&x-plex-advertising-donottrack=0&x-plex-drm=&x-plex-model=&x-plex-platform=Edge&x-plex-platform-version=137.0.0.0&x-plex-product=Plex+Mediaverse&x-plex-device-screen-resolution=&x-plex-device-vendor=&x-plex-version=&x-plex-provider-streaming-start=1750656058&url=fb8e004f48bdd3afcc28ade19817a2d1-8ef47d34b9dd4dad4b5cdef40327e0c2d85f0903c24983916f52654cb562d80060140c771ac02715be858ef0794c3b39aa0ed3033a657693f7b9597ea57f39dc39fa009e0196d46ae5ec42d3a508c5d27a887b2722eba9e372d894e25d6d8adf7f3ac6bc0ebe8b04ceefe48fed4d62c0305a5fdfcc875147a3ec3f21bcf420011521d4a3044f5ad0932af6f88c23d1fdb324fac4bfc30a7c731a0eac6d0cfe0683179cdd192a305302a1da297fdc5d9e396a732ec9321bc6ffa4083c70aaefd3fcc7cba74040d6371f35c7de90f6e722b56df763dcb3cfe8803c3f43ada852e4d3a2cef2d609d11ebda7c786ab08b822e5cba317a6c27db8790c7d0c6334d418c440f47e66532ef0e8881388f31398bc2f9d7b9bfd64647eb6814a03b6ff09cbf90e36b60ea17a95cf3735b7f49cde2f2dbb9c50dca35cccee67dd6c24b7642dfd0b39773f2fd7b71d5ebc1d5af68dd5c32b3e3f158ebd2f3b1bd1cfd4eae47941554e3408405aab2be905f2cab2df63210df283edb1065ec8f06a66e8118851966db6e0b16b73a11241fb08f80471bb7719be5a46f34e81b7e7b129b2db58b179072dbf134b1bc7ab32cb476133c6e059e819f42e5e358e0201fd0a6166a19de4457981e09b84a23f7b67915ac3f7460794c8fc1c426bbb4c0f47a3fc16bb04c03bba83e51e15162891420ffc2c2d6f11928fd05f18ec5aea888aa5c015e942a9b9eb860569e973c719128b2e35236d53d6864c40996c3ae7e0387f3c8dba325dde33a9b82bbf4b36b71012220a96fef5e526d678c4794a2ff3d791f17ee4df44dc728ce28ff9187fdf6f2883d9e6b02ffa5b831fe7dc1b204ae65ca88aac6c657217668c8280453eb53e005c4c7855cf5ccf185601b0c1957e61e6d5aa7ae4c09df3a1d0eb9e99a6a3551f586b14cb29ca690674d7d8b7be82190ab7e52418e3d73f4bf91819ccecd64b59eb346893850420e71d92eda629ba41bd614fea35775ba919fa518080bd0ba82e84af57d26afa2a59659b65f7d933626f0f5ad0a8ff5516f0462a6786667184b3323981ac8eeb59c8869d97a849b4393e8564cad2072e752f45c9d727618d685936481da4d4ff194a7279af08c576b7c2a534afd4b33e2f4f14b9939b7d16b7acd1fd76b039f45a6c72a37a1fdc1b5041c896883422ae96df184ffa0fe31f1df84969c9f09c7fce9e5009d0450a5c2fa074fa6e3a2fbb9352ccbee55ea65dea9cf9bb13a8225c7d4e015a0c48ac7a5e9f9356a0322e9e9f86ceda5c34176f20f0c24b1fec90b753da93ec95a336e8bd74531e56654c479bfd08ebcce0c4537ff389b5d64b18a4a0d29eb275c4e0bffc0b63ff3090466b92707b6af653ae0087dc6a2b548b1e68b001e58163b360c31bafa4a2fbf9fc62fe0377fa6c2651c116aaa7457bea566fe847dd36b34a93a50e0160d6558d719a4de0be7ff5aa81cf5d98707374551b2146053097471fe09354bdc064ff79e7c78556e3b676d6646ad134e1fd42eebcbeba4fd802956560302a6781f40085b220d80fb0326b8b7865072609afab454860a5a753a60db790968f607b9f11690d6091165a52986d40e06214f7db725e1de53a6eec7ce241bde335cb448c0630bb1d4333a40f5c75feaeb551ed7cf2c8b5fe291b5566e200c62bd09e74197ccf54da8d642e2e2885fc725f79dc32ca7aaac239d9c6cd7f12f037acd4c51c65ee47f2ec13403d66bf849ed3b98d5ee72d62e0ba4808f8d4a0cfeb17e342205a2125f9a986e46ee0ea67c32d3cd0f2e39bae92bd7ac8c25d4cf21c86ece2b47fe0b4d63033982658263b32a3f74214b9de562f39a9160b59273684fcfc91cbd8eb8aea1dd261d1cc9729557623621934ff54ad07ab2ac7a9573bbe84461e0260b67e3154f310b30f11c95012a41a65c59f2a3477b753d6cf53909edbcb910cacf0f687cd9af1081363c1142cf9eb487a853de65f8edfac857a74b264c6f11faa1a03d08c5076db9a21dff8247239322c8622b31d48e8337dc385f03c2faa48d304e69934ec9c33483cab27dd72c9da3fb6034f36ad3f0963f474f723973daccba13ba9befb79bc567654b3454ed65b75c1123cbc1bb980cfdb3ba11b42d0e6630a36079db29dc6b014537fc31ff17cad4d23f07f54d854dee019b3097dd57e1232751dc4096b176811a70f8be109313af9702dcd20e5b629e1bde7024238de383d57bb4bb2f2cf083447e850037b5e5175244ca2820c112664ee5d4009e26e427148cc445c9d17d3541c0ffb9b1a97e7f80c545458b88f1d871e6a0697193c718a7ea36ac330cb3395be60f27b7567dce6591417d863fb91c941348e0fca7df1e2c2b3d76fee64980a3a3fed259d3d3a9d5653e7b2020885582805b2103cc97fae9fab81a9fbfe4b727acb033474fc99e6436e9a61e81fa9968ddbfa63121fd6c79a5fa9123ef4f6cde1d4806f414dc521cff40f78b64c089cf8850b2314c68eb5841ab5e8c9692f7066d127ba7ed9dcbd5b6b787727510edd810311ec95456b88c5bb2b3e38b8dc862171a7e289ea070aab0f003bf856f8ee276c6bf5fe85040cf2a5d5575052433e092fcc72b715742fa9cde95ef937048e987df4ac51ad01ce5cd9a9585f67d2eecabba07cf2cea666587afafbaac560f4a6fffb977e4ae4458a4692e88c74ca0a7434be73ac33d8839721b9fd7136dec917aa3a18eb5f5d08498fc126bc618b0dbb7408b0216657a7d2c5ad86987a6fa8633cf5d9d2af2579869f041505ef8f475abea3f75a83a6e277ee967fe4b488b3d350243a741d021fc499d5c4c7cefd27f7039d35f12daa4ba329eb501d2c5de1699ec1f526475fc8ed0209aba7506bbdbe9e24f85d99873977d5f4b6d31d08861d639ca47890630b73d6945baaaa55e381ff41c50008eb7551b5936649be46d35d6a941e7694d7b07025f9c265b10722df15cad6c64cc3c199f1d8926f347b4cd606a3775ef0e54c2259223a45e64bd66ef92b4ac425c0818398890517a9a5de4f5afffc54c41563
+
+#EXTINF:-1 tvg-id="lovenaturehd" tvg-name="Love Nature HD" group-title="Curious Pear",Love Nature HD
+https://aegis-cloudfront-1.tubi.video/dc8bda97-ce9e-4091-b4e8-11254dea4da6/playlist.m3u8
+
+#EXTINF:-1 tvg-id="popc" tvg-name="PopC" group-title="Curious Pear",PopC
+https://s1.tvm4a1.cfd/aktv/popc/AKTV.m3u8
+
+#EXTINF:-1 tvg-id="hotelinspector" tvg-name="The Hotel Inspector" group-title="Curious Pear",The Hotel Inspector
+https://amg00654-itv-amg00654c4-rakuten-uk-5263.playouts.now.amagi.tv/playlist.m3u8
+
+#EXTINF:-1 tvg-id="andtv" tvg-name="&TV HD" group-title="Curious Pear",&TV HD
+https://amg01117-amg01117c1-amgplt0165.playout.now3.amagi.tv/playlist.m3u8
+
+#EXTINF:-1 tvg-id="mbcdrama" tvg-name="MBC Drama" group-title="Curious Pear",MBC Drama
+https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-drama-usa/ea2f5db904aff224b7066e59c7f585a2/index.m3u8
+
+#EXTINF:-1 tvg-id="desiplay" tvg-name="DesiPlay TV HD" group-title="Curious Pear",DesiPlay TV HD
+https://amg00857-amg00857c1-rakuten-us-4656.playouts.now.amagi.tv/playlist.m3u8
+
+#EXTINF:-1 tvg-id="kan" tvg-name="Kan 11" group-title="Curious Pear",Kan 11
+https://kan11w.media.kan.org.il/hls/live/2105694/2105694/source1_600/chunklist.m3u8
+
+#EXTINF:-1 tvg-id="i24" tvg-name="i24 News" group-title="Curious Pear",i24 News
+https://bcovlive-a.akamaihd.net/ecf224f43f3b43e69471a7b626481af0/eu-central-1/5377161796001/profile_0/chunklist.m3u8
+
+#EXTINF:-1 tvg-id="fifaplus" tvg-name="FIFA+ TV" group-title="Curious Pear",FIFA+ TV
+https://epg.provider.plex.tv/library/parts/5e20b730f2f8d5003d739db7-66628d4a8dfc36b8c8a399c4/variant.m3u8?x-plex-token=ubwiy_K-vDizoy7s7xHS&x-plex-advertising-identifier=&x-plex-client-identifier=51b4294b-cda6-4978-bc73-c8a23480235a&x-plex-playback-id=p_5f46e87f-fc19-4abb-9604-16be4d87790d&x-plex-playback-session-id=&x-plex-session-id=&x-plex-device=Windows&x-plex-device-name=Plex+Mediaverse&x-plex-advertising-donottrack=0&x-plex-drm=&x-plex-model=&x-plex-platform=Edge&x-plex-platform-version=138.0.0.0&x-plex-product=Plex+Mediaverse&x-plex-device-screen-resolution=&x-plex-device-vendor=&x-plex-version=&x-plex-provider-streaming-start=1751492969&url=093ffbac4276fbb096cbd7b1422105e3-7e12553d32fb2b1b0f91e23b0de4564bf16278fdfb05fdf3be251d1d130dc2bde64567794baeb51bb868af4e56a925db72520b9208364056f16e1bfde50cf460031271f72942e93622532abb52bfd34ef6486e48f813b6d9c181a08b50784b265f807537da26812f17016c4188c8a088e934a259042b2d5e2dbe09cf66c205d838a118da26d5a0c0e0434abc48965142c4b088ee2c27e368636baf07bebc67b4
+
+#EXTINF:-1 tvg-id="trutv" tvg-name="Tru TV" group-title="Curious Pear",Tru TV
+http://fl1.moveonjoy.com/TRU_TV/index.m3u8
+
+#EXTINF:-1 tvg-id="tbs" tvg-name="TBS" group-title="Curious Pear",TBS
+http://fl3.moveonjoy.com/TBS/index.m3u8
+
+#EXTINF:-1 tvg-id="cbeebies" tvg-name="Cbeebies" group-title="Curious Pear",Cbeebies
+http://primestreams.tv:826/live/SF11/vulwBvtfo9/98851.ts
+
+#EXTINF:-1 tvg-id="foxnews" tvg-name="Fox News" group-title="Curious Pear",Fox News
+https://fl3.moveonjoy.com/FOX_NEWS_CHANNEL/tracks-v1a1/mono.ts.m3u8
+
+#EXTINF:-1 tvg-id="msnbc" tvg-name="MSNBC" group-title="Curious Pear",MSNBC
+http://fl1.moveonjoy.com/MSNBC/index.m3u8
+
+#EXTINF:-1 tvg-id="rtmasean" tvg-name="RTM Asean" group-title="Curious Pear",RTM Asean
+https://d25tgymtnqzu8s.cloudfront.net/event/smil:event1/chunklist_b2596000_slENG.m3u8
+
+#EXTINF:-1 tvg-id="bguruan" tvg-name="Bahrain Quruan" group-title="Curious Pear",Bahrain Quruan
+https://5c7b683162943.streamlock.net/live/ngrp:bahrainquran_all/chunklist_w1072808089_b2487000.m3u8
+
+#EXTINF:-1 tvg-id="tnt" tvg-name="TNT" group-title="Curious Pear",TNT
+http://primestreams.tv/live/SF11/vulwBvtfo9/96162.ts
+
+#EXTINF:-1 tvg-id="trtworld" tvg-name="TRT World" group-title="Curious Pear",TRT World
+https://tv-trtworld.medya.trt.com.tr/master.m3u8
+
+#EXTINF:-1 tvg-id="atx" tvg-name="AT-X" group-title="Curious Pear",AT-X
+http://vthanh.utako.moe/AT-X/index.m3u8
+
+#EXTINF:-1 tvg-id="zoomoo" tvg-name="ZooMoo Kids" group-title="Curious Pear",ZooMoo Kids
+https://zoomoo-samsungau.amagi.tv/playlist.m3u8
+
+#EXTINF:-1 tvg-id="starz" tvg-name="STARZ" group-title="Curious Pear",STARZ
+http://fl1.moveonjoy.com/STARZ/index.m3u8
+
+#EXTINF:-1 tvg-id="clubbingtv" tvg-name="Clubbing TV" group-title="Curious Pear",Clubbing TV
+https://clubbingtv-oando.amagi.tv/playlist.m3u8
+
+#EXTINF:-1 tvg-id="moviesphere" tvg-name="Movie-Sphere" group-title="Curious Pear",Movie-Sphere
+https://dbrb49pjoymg4.cloudfront.net/manifest/3fec3e5cac39a52b2132f9c66c83dae043dc17d4/prod_default_xumo-ams-aws/f74bc44e-59f6-46dd-82d6-f5c30083966a/4.m3u8
+
+#EXTINF:-1 tvg-id="2ofustv" tvg-name="2ofus TV" group-title="Curious Pear",2ofus TV
+https://embed-cloudfront.wistia.com/deliveries/7e4d14168a287ad00e7fdf7478c8d2850ba8f4ca.m3u8
+
+#EXTINF:-1 tvg-id="surfroots" tvg-name="Surf Roots TV" group-title="Curious Pear",Surf Roots TV
+https://d35j504z0x2vu2.cloudfront.net/v1/manifest/0bc8e8376bd8417a1b6761138aa41c26c7309312/surf-roots-tv/810b3f90-5fdd-488f-96bb-a30982c16e6e/0.m3u8
+
+#EXTINF:-1 tvg-id="UltimateMusicChannel" tvg-name="The Ultimate Music Channel" group-title="Curious Pear",The Ultimate Music Channel
 https://app.viloud.tv/hls/channel/0694b92d093cc2bd5438ff9bbccaf1a2.m3u8
 
-#EXTINF:-1 tvg-id="euronews" tvg-name="Euro News" group-title="Hilay TV",Euro News
+#EXTINF:-1 tvg-id="euronews" tvg-name="Euro News" group-title="Curious Pear",Euro News
 https://d35j504z0x2vu2.cloudfront.net/v1/manifest/0bc8e8376bd8417a1b6761138aa41c26c7309312/euronews/c1127aff-97b0-4058-97d6-aadbaaf5b6c4/5.m3u8
 
-#EXTINF:-1 tvg-id="howto" tvg-name="How it's Made" group-title="Hilay TV",How it's Made
+#EXTINF:-1 tvg-id="howto" tvg-name="How it's Made" group-title="Curious Pear",How it's Made
 https://dbrb49pjoymg4.cloudfront.net/manifest/3fec3e5cac39a52b2132f9c66c83dae043dc17d4/prod_default_xumo-ams-aws/1bf48d66-1346-41db-b80d-ecc0baf9af5c/0.m3u8
 
-#EXTINF:-1 tvg-id="sensicaljr" tvg-name="Sensical Jr" group-title="Hilay TV",Sensical Jr
+#EXTINF:-1 tvg-id="curiositynow" tvg-name="Curiosity Now" group-title="Curious Pear",Curiosity Now
+https://dbrb49pjoymg4.cloudfront.net/manifest/3fec3e5cac39a52b2132f9c66c83dae043dc17d4/prod_default_xumo-ams-aws/f80f8cf9-60b5-4800-b9a9-98799ad59fa3/4.m3u8
+
+#EXTINF:-1 tvg-id="nbcgolf" tvg-name="Sky Sports Golf" group-title="Curious Pear",Sky Sports Golf
+http://primestreams.tv/live/shayshay/KAnkPMfN8I/98779.ts
+
+#EXTINF:-1 tvg-id="sensicaljr" tvg-name="Sensical Jr" group-title="Curious Pear",Sensical Jr
 https://dbrb49pjoymg4.cloudfront.net/manifest/3fec3e5cac39a52b2132f9c66c83dae043dc17d4/prod_default_xumo-ams-aws/588249d5-ab5b-40f9-8951-7f99f488d05a/4.m3u8
 
-#EXTINF:-1 tvg-id="sensicalmakers" tvg-name="Sensical Makers" group-title="Hilay TV",Sensical Makers
+#EXTINF:-1 tvg-id="sensicalmakers" tvg-name="Sensical Makers" group-title="Curious Pear",Sensical Makers
 https://dbrb49pjoymg4.cloudfront.net/manifest/3fec3e5cac39a52b2132f9c66c83dae043dc17d4/prod_default_xumo-ams-aws/bb3bdc6c-a3a7-4029-b0fe-f25d170a11f1/4.m3u8
 
