@@ -1,4 +1,4 @@
-name: Generate and Commit Hilay TV Playlist
+name: Generate TV Playlist
 
 on:
   schedule:
