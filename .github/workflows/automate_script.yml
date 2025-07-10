@@ -5,7 +5,7 @@ on:
     # Runs every 30 minutes.
     # Note: GitHub Actions schedules are based on UTC time.
     # Adjust cron expression if you need it to align with a specific local time.
-    - cron: '*/30 * * * *'
+    - cron: '*/10 * * * *'
   # Allows you to manually trigger the workflow from the 'Actions' tab in GitHub.
   workflow_dispatch:
 
