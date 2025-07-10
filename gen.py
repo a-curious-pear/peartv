@@ -53,7 +53,7 @@ def generate_m3u_playlist():
                 final_url = get_final_url(original_url)
                 
                 # Add to M3U
-                m3u_content += f"#EXTINF:-1 tvg-id=\"{prefix}\" tvg-name=\"{name}\" group-title=\"Hilay TV\",{name}\n"
+                m3u_content += f"#EXTINF:-1 tvg-id=\"{prefix}\" tvg-name=\"{name}\" group-title=\"Curious Pear\",{name}\n"
                 m3u_content += f"{final_url}\n\n"
                 
                 print(f"Processed: {name} - Original: {original_url} - Final: {final_url}")
