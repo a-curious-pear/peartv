@@ -20,22 +20,20 @@ def fetch_catalog_metadata():
         response.raise_for_status()
         catalog_data = response.json()
         for channel in catalog_data.get("metas", []):
-            catalog_map[channel.get("id", "")] = {
-                "name": channel.get("name", ""),
-                "logo": channel.get("logo", ""),
-                "description": channel.get("description", ""),
-                "releaseInfo": channel.get("releaseInfo", ""),
-                "genres": "|".join(channel.get("genres", []))
-            }
+            channel_id = channel.get("id", "")
+            if channel_id:
+                catalog_map[channel_id] = {
+                    "name": channel.get("name", channel_id),
+                    "logo": channel.get("logo", ""),
+                    "genres": "|".join(channel.get("genres", []))
+                }
     except requests.exceptions.RequestException as e:
         print(f"Error fetching catalog metadata: {e}")
     return catalog_map
 
 def generate_m3u_playlist():
-    # Fetch the catalog data first to enrich info
     catalog_data = fetch_catalog_metadata()
 
-    # Fetch the manifest.json to get channel prefixes
     manifest_url = 'https://hilaytv.vercel.app/manifest.json'
     try:
         response = requests.get(manifest_url, timeout=10)
@@ -60,7 +58,6 @@ def generate_m3u_playlist():
             response_primary.raise_for_status()
             channel_data = response_primary.json()
         except (requests.exceptions.RequestException, json.JSONDecodeError):
-            # Try fallback
             try:
                 response_fallback = requests.get(channel_url_fallback, timeout=10)
                 response_fallback.raise_for_status()
@@ -80,15 +77,13 @@ def generate_m3u_playlist():
 
             final_url = get_final_url(original_url)
 
-            # Get metadata from catalog
+            # Lookup catalog metadata by prefix (which matches 'id' in catalog)
             meta = catalog_data.get(prefix, {})
             name = meta.get("name", stream.get('name', prefix))
             logo = meta.get("logo", "")
-            description = meta.get("description", "")
-            release_info = meta.get("releaseInfo", "")
             genres = meta.get("genres", "")
 
-            m3u_content += f'#EXTINF:-1 tvg-id="{prefix}" tvg-name="{name}" tvg-logo="{logo}" group-title="{genres}", {name} - {release_info}\n'
+            m3u_content += f'#EXTINF:-1 tvg-id="{prefix}" tvg-name="{name}" tvg-logo="{logo}" group-title="{genres}",{name}\n'
             m3u_content += f"{final_url}\n\n"
 
             print(f"Added: {name} ({prefix})")
@@ -96,7 +91,6 @@ def generate_m3u_playlist():
         else:
             print(f"Skipping {prefix}: No stream data.")
 
-    # Write to peartv.m3u
     filename = 'peartv.m3u'
     with open(filename, 'w', encoding='utf-8') as f:
         f.write(m3u_content)
