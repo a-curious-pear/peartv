@@ -14,107 +14,198 @@ def get_final_url(url):
     except requests.exceptions.RequestException:
         return url
 
+# Massive genre keyword mapping, only keeps Islam related for religion
+genre_keywords_map = {
+    "news": "News",
+    "current affairs": "News",
+    "live": "News",
+    "breaking": "News",
+    "documentary": "Documentary",
+    "report": "News",
+    "international": "News",
+    "middle east": "News",
+    "world": "News",
+
+    "sports": "Sports",
+    "soccer": "Sports",
+    "football": "Sports",
+    "cricket": "Sports",
+    "tennis": "Sports",
+    "billiard": "Sports",
+    "match": "Sports",
+    "league": "Sports",
+    "cup": "Sports",
+    "olympic": "Sports",
+    "nba": "Sports",
+    "fifa": "Sports",
+    "rugby": "Sports",
+    "golf": "Sports",
+
+    "politics": "Politics",
+    "parliament": "Politics",
+    "senate": "Politics",
+    "congress": "Politics",
+    "election": "Politics",
+
+    "government": "Government",
+    "state": "Government",
+    "official": "Government",
+
+    # Islam only
+    "islam": "Religion",
+    "muslim": "Religion",
+    "quran": "Religion",
+    "quruan": "Religion",
+
+    "kids": "Kids",
+    "child": "Kids",
+    "children": "Kids",
+    "cartoon": "Kids",
+    "animation": "Kids",
+    "learning": "Kids",
+    "nursery": "Kids",
+    "preschool": "Kids",
+    "school": "Kids",
+
+    "entertainment": "Entertainment",
+    "culture": "Entertainment",
+    "events": "Entertainment",
+    "variety": "Entertainment",
+    "show": "Entertainment",
+    "maliku": "Entertainment",
+    "drama": "Entertainment",
+    "comedy": "Entertainment",
+    "reality": "Entertainment",
+
+    "music": "Music",
+    "band": "Music",
+    "concert": "Music",
+    "song": "Music",
+    "hits": "Music",
+    "radio": "Radio",
+    "fm": "Radio",
+
+    "education": "Education",
+    "science": "Education",
+    "history": "Education",
+    "technology": "Education",
+    "tech": "Education",
+
+    "movie": "Movies",
+    "cinema": "Movies",
+    "film": "Movies",
+    "hollywood": "Movies",
+    "bollywood": "Movies",
+
+    "audio": "Radio",
+
+    "lifestyle": "Lifestyle",
+    "travel": "Lifestyle",
+    "food": "Lifestyle",
+    "cooking": "Lifestyle",
+    "fashion": "Lifestyle",
+
+    "shopping": "Shopping",
+    "shop": "Shopping",
+    "qvc": "Shopping",
+    "hsn": "Shopping",
+
+    "docu": "Documentary",
+    "wildlife": "Documentary",
+    "nature": "Documentary",
+
+    "info": "General",
+    "general": "General",
+}
+
+def classify_genre_smart(raw_genre):
+    genre_lower = raw_genre.lower()
+    for keyword, category in genre_keywords_map.items():
+        if keyword in genre_lower:
+            return category
+    return "General"
+
 def generate_m3u_playlist():
-    # Fetch the catalog data to build id -> logo and id -> genre group mapping
-    catalog_url = 'https://hilaytv.vercel.app/catalog/tv/hilay_catalog.json'
-    logo_map = {}
-    group_map = {}
-    try:
-        response = requests.get(catalog_url, timeout=10)
-        response.raise_for_status()
-        catalog_data = response.json()
-        for channel in catalog_data.get("metas", []):
-            channel_id = channel.get("id", "").replace(".mv", "").lower()
-            logo = channel.get("logo", "")
-            
-            genres_list = channel.get("genres", [])
-            group_title = "General"  # default fallback
-            
-            if genres_list:
-                # Take only the first segment before "|" of the first genre string
-                first_genre = genres_list[0].split("|")[0].strip()
-                if first_genre:
-                    group_title = first_genre
-
-            if channel_id:
-                logo_map[channel_id] = logo
-                group_map[channel_id] = group_title
-    except requests.exceptions.RequestException as e:
-        print(f"Failed to fetch catalog data: {e}")
-
-    # Fetch the manifest.json
     manifest_url = 'https://hilaytv.vercel.app/manifest.json'
+    catalog_url = 'https://hilaytv.vercel.app/catalog/tv/maldives.json'
+
+    # Fetch manifest
     try:
-        response = requests.get(manifest_url, timeout=10)
-        response.raise_for_status()
-        manifest = response.json()
+        manifest = requests.get(manifest_url, timeout=10).json()
     except requests.exceptions.RequestException as e:
         print(f"Failed to fetch manifest.json: {e}")
         return
 
-    # Prepare M3U header
+    # Fetch catalog
+    try:
+        catalog = requests.get(catalog_url, timeout=10).json()
+        catalog_metas = catalog.get("metas", [])
+    except requests.exceptions.RequestException as e:
+        print(f"Failed to fetch catalog: {e}")
+        return
+
+    # Build id-to-logo+genre lookup
+    id_data_map = {}
+    for channel in catalog_metas:
+        channel_id = channel.get("id", "").lower().replace(".mv", "")
+        logo = channel.get("logo", "")
+        genres_list = channel.get("genres", [])
+        genre = "General"
+        if genres_list:
+            first_segment = genres_list[0].split("|")[0].strip()
+            genre = classify_genre_smart(first_segment)
+        id_data_map[channel_id] = {
+            "logo": logo,
+            "genre": genre
+        }
+
+    # Start M3U content
     m3u_content = "#EXTM3U\n"
     m3u_content += "# Generated from Hilay TV API\n"
     m3u_content += "# https://hilaytv.vercel.app/\n\n"
 
-    # Process each channel prefix
     processed_count = 0
     for prefix in manifest.get('idPrefixes', []):
-        normalized_prefix = prefix.replace(".mv", "").lower()
-        
+        clean_prefix = prefix.lower().replace(".mv", "")
         channel_url_primary = f"https://hilaytv.vercel.app/stream/tv/{prefix}.mv.json"
         channel_url_fallback = f"https://hilaytv.vercel.app/stream/tv/{prefix}.json"
         
         channel_data = None
-        
         try:
             response_primary = requests.get(channel_url_primary, timeout=10)
             response_primary.raise_for_status()
             channel_data = response_primary.json()
-        except (requests.exceptions.RequestException, json.JSONDecodeError) as e:
-            print(f"Primary URL failed for {prefix} ({channel_url_primary}): {e}. Trying fallback.")
-            channel_data = None
-
-        if not channel_data or not channel_data.get('streams'):
+        except (requests.exceptions.RequestException, json.JSONDecodeError):
             try:
                 response_fallback = requests.get(channel_url_fallback, timeout=10)
                 response_fallback.raise_for_status()
                 channel_data = response_fallback.json()
-                if channel_data and channel_data.get('streams'):
-                    print(f"Successfully used fallback URL for {prefix}")
-            except (requests.exceptions.RequestException, json.JSONDecodeError) as e:
-                print(f"Fallback URL also failed for {prefix} ({channel_url_fallback}): {e}. Skipping.")
+            except (requests.exceptions.RequestException, json.JSONDecodeError):
                 continue
 
         if channel_data and channel_data.get('streams'):
             stream = channel_data['streams'][0]
             name = stream.get('name', prefix)
             original_url = stream.get('url', '')
-            
             if not original_url:
-                print(f"Skipping {prefix}: No URL found after trying both channels")
                 continue
-            
-            final_url = get_final_url(original_url)
-            
-            # Get logo and group from catalog by normalized id
-            logo = logo_map.get(normalized_prefix, "")
-            group_title = group_map.get(normalized_prefix, "General")
-            
-            m3u_content += f"#EXTINF:-1 tvg-id=\"{prefix}\" tvg-name=\"{name}\" tvg-logo=\"{logo}\" group-title=\"{group_title}\",{name}\n"
-            m3u_content += f"{final_url}\n\n"
-            
-            print(f"Processed: {name} - Original: {original_url} - Final: {final_url}")
-            processed_count += 1
-        else:
-            print(f"Skipping {prefix}: No stream data found in either URL.")
 
-    # Save to file
-    filename = 'peartv.m3u'
-    with open(filename, 'w', encoding='utf-8') as f:
+            final_url = get_final_url(original_url)
+            logo = ""
+            group_title = "General"
+
+            if clean_prefix in id_data_map:
+                logo = id_data_map[clean_prefix]["logo"]
+                group_title = id_data_map[clean_prefix]["genre"]
+
+            m3u_content += f'#EXTINF:-1 tvg-id="{prefix}" tvg-name="{name}" tvg-logo="{logo}" group-title="{group_title}",{name}\n'
+            m3u_content += f"{final_url}\n\n"
+            processed_count += 1
+
+    with open('peartv.m3u', 'w', encoding='utf-8') as f:
         f.write(m3u_content)
 
-    print(f"\nM3U playlist generated: {filename}")
+    print(f"\nM3U playlist generated: peartv.m3u")
     print(f"Total channels processed: {processed_count}/{len(manifest.get('idPrefixes', []))}")
 
 if __name__ == "__main__":
