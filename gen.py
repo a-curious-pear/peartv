@@ -15,9 +15,10 @@ def get_final_url(url):
         return url
 
 def generate_m3u_playlist():
-    # Fetch the catalog data to build id -> logo mapping
+    # Fetch the catalog data to build id -> logo and id -> genres mapping
     catalog_url = 'https://hilaytv.vercel.app/catalog/tv/hilay_catalog.json'
     logo_map = {}
+    group_map = {}
     try:
         response = requests.get(catalog_url, timeout=10)
         response.raise_for_status()
@@ -25,8 +26,12 @@ def generate_m3u_playlist():
         for channel in catalog_data.get("metas", []):
             channel_id = channel.get("id", "").replace(".mv", "").lower()
             logo = channel.get("logo", "")
+            genres_list = channel.get("genres", [])
+            group_title = "|".join(genres_list) if genres_list else "Curious Pear"
+            
             if channel_id:
                 logo_map[channel_id] = logo
+                group_map[channel_id] = group_title
     except requests.exceptions.RequestException as e:
         print(f"Failed to fetch catalog data: {e}")
 
@@ -85,10 +90,11 @@ def generate_m3u_playlist():
             
             final_url = get_final_url(original_url)
             
-            # Get logo from catalog by normalized id
+            # Get logo and genres from catalog by normalized id
             logo = logo_map.get(normalized_prefix, "")
+            group_title = group_map.get(normalized_prefix, "Curious Pear")
             
-            m3u_content += f"#EXTINF:-1 tvg-id=\"{prefix}\" tvg-name=\"{name}\" tvg-logo=\"{logo}\" group-title=\"Curious Pear\",{name}\n"
+            m3u_content += f"#EXTINF:-1 tvg-id=\"{prefix}\" tvg-name=\"{name}\" tvg-logo=\"{logo}\" group-title=\"{group_title}\",{name}\n"
             m3u_content += f"{final_url}\n\n"
             
             print(f"Processed: {name} - Original: {original_url} - Final: {final_url}")
