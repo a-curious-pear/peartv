@@ -15,7 +15,7 @@ def get_final_url(url):
         return url
 
 def generate_m3u_playlist():
-    # Fetch the catalog data to build id -> logo and id -> genres mapping
+    # Fetch the catalog data to build id -> logo and id -> genre group mapping
     catalog_url = 'https://hilaytv.vercel.app/catalog/tv/hilay_catalog.json'
     logo_map = {}
     group_map = {}
@@ -26,9 +26,16 @@ def generate_m3u_playlist():
         for channel in catalog_data.get("metas", []):
             channel_id = channel.get("id", "").replace(".mv", "").lower()
             logo = channel.get("logo", "")
-            genres_list = channel.get("genres", [])
-            group_title = "|".join(genres_list) if genres_list else "Curious Pear"
             
+            genres_list = channel.get("genres", [])
+            group_title = "General"  # default fallback
+            
+            if genres_list:
+                # Take only the first segment before "|" of the first genre string
+                first_genre = genres_list[0].split("|")[0].strip()
+                if first_genre:
+                    group_title = first_genre
+
             if channel_id:
                 logo_map[channel_id] = logo
                 group_map[channel_id] = group_title
@@ -90,9 +97,9 @@ def generate_m3u_playlist():
             
             final_url = get_final_url(original_url)
             
-            # Get logo and genres from catalog by normalized id
+            # Get logo and group from catalog by normalized id
             logo = logo_map.get(normalized_prefix, "")
-            group_title = group_map.get(normalized_prefix, "Curious Pear")
+            group_title = group_map.get(normalized_prefix, "General")
             
             m3u_content += f"#EXTINF:-1 tvg-id=\"{prefix}\" tvg-name=\"{name}\" tvg-logo=\"{logo}\" group-title=\"{group_title}\",{name}\n"
             m3u_content += f"{final_url}\n\n"
