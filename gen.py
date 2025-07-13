@@ -91,9 +91,7 @@ def generate_m3u_playlist():
         id_data_map[channel_id] = {"logo": logo, "genre": genre}
 
     # Prepare M3U header
-    m3u_content = "#EXTM3U\n"
-    m3u_content += "# Generated from Hilay TV API\n"
-    m3u_content += "# https://hilaytv.vercel.app/\n\n"
+    m3u_content = "#EXTM3U\n\n"
 
     processed_count = 0
     for prefix in manifest.get('idPrefixes', []):
