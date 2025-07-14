@@ -2,7 +2,7 @@ import requests
 import json
 import re
 import subprocess
-import os # Added for os.getenv in get_youtube_m3u8_link
+import os
 
 # --- NEW: YouTube Conversion Imports and Functions ---
 def is_youtube_url(url):
@@ -12,7 +12,8 @@ def is_youtube_url(url):
         r"(?:https?://)?(?:www\.)?(?:m\.)?(?:youtube\.com|youtu\.be)/live/([a-zA-Z0-9_-]+)",
         r"(?:https?://)?(?:www\.)?(?:m\.)?(?:youtube\.com|youtu\.be)/embed/([a-zA-Z0-9_-]+)",
         r"(?:https?://)?(?:www\.)?(?:m\.)?(?:youtube\.com|youtu\.be)/v/([a-zA-Z0-9_-]+)",
-        r"(?:https?://)?youtu\.be/([a-zA-Z0-9_-]+)"
+        r"(?:https?://)?youtu\.be/([a-zA-Z0-9_-]+)",
+        r"http://googleusercontent\.com/youtube\.com/([a-zA-Z0-9_-]+)" # This pattern is for less common redirects
     ]
     for pattern in youtube_patterns:
         if re.match(pattern, url):
@@ -25,8 +26,9 @@ def get_youtube_m3u8_link(youtube_url):
     Returns the M3U8 URL or None if extraction fails.
     """
     # Using 'hls' format explicitly for live streams, and '-g' to get the URL
+    # yt-dlp will only return an HLS stream if it's currently live and available in that format.
     command_hls = ['yt-dlp', '-f', 'hls', '-g', youtube_url]
-    command_general = ['yt-dlp', '-g', youtube_url] # Fallback
+    command_general = ['yt-dlp', '-g', youtube_url] # Fallback for other direct URLs
 
     try:
         print(f"  Attempting yt-dlp HLS extraction for YouTube URL: {youtube_url}")
@@ -47,10 +49,13 @@ def get_youtube_m3u8_link(youtube_url):
                 print(f"  Could not find a suitable M3U8 URL for {youtube_url}.")
                 return None
     except subprocess.CalledProcessError as e:
-        print(f"  Error extracting YouTube URL with yt-dlp for {youtube_url}: {e.stderr.strip()}")
+        print(f"  Error extracting YouTube URL with yt-dlp for {youtube_url}:")
+        print(f"  Return Code: {e.returncode}")
+        print(f"  Stderr: {e.stderr.strip()}")
+        # This is where you'll see messages like "ERROR: This live event has not started or has been finished."
         return None
     except subprocess.TimeoutExpired:
-        print(f"  yt-dlp command timed out for {youtube_url}. Stream might be unavailable.")
+        print(f"  yt-dlp command timed out for {youtube_url}. Stream might be unavailable or network issues.")
         return None
     except FileNotFoundError:
         print("  Error: 'yt-dlp' command not found. Please ensure yt-dlp is installed and in your system's PATH.")
@@ -186,7 +191,7 @@ def generate_m3u_playlist():
                 print(f"Skipping {prefix}: No URL found after trying both channels")
                 continue
 
-            # --- NEW: YouTube URL Conversion Logic ---
+            # --- YouTube URL Conversion Logic ---
             processed_url = original_url
             if is_youtube_url(original_url):
                 print(f"Detected YouTube URL for {name}: {original_url}")
