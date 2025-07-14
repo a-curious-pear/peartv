@@ -227,19 +227,51 @@ def generate_m3u_playlist():
                 continue
 
             processed_url = original_url
-            logger.info(f"  Original URL from JSON: {original_url}")
+            logger.info(f"  Initial URL from JSON: {original_url}")
 
+            # First, check if the original URL is a YouTube link
             if is_youtube_url(original_url):
-                logger.info(f"  is_youtube_url returned TRUE for: {original_url}")
+                logger.info(f"  Original URL is a YouTube link: {original_url}")
                 youtube_m3u8 = get_youtube_m3u8_link(original_url)
                 if youtube_m3u8:
                     processed_url = youtube_m3u8
-                    logger.info(f"  SUCCESS: Converted YouTube URL to M3U8: {processed_url}")
+                    logger.info(f"  SUCCESS: Converted original YouTube URL to M3U8: {processed_url}")
                 else:
-                    logger.warning(f"  FAILURE: get_youtube_m3u8_link returned None. Using original YouTube URL as fallback.")
+                    logger.warning(f"  FAILURE: get_youtube_m3u8_link returned None for original YouTube URL. Attempting redirect check.")
+                    # If original YouTube conversion fails, still try to follow redirects
+                    final_redirect_url = get_final_url(original_url)
+                    if final_redirect_url != original_url and is_youtube_url(final_redirect_url):
+                        logger.info(f"  Redirected URL is also a YouTube link: {final_redirect_url}. Attempting yt-dlp conversion.")
+                        youtube_m3u8_redirect = get_youtube_m3u8_link(final_redirect_url)
+                        if youtube_m3u8_redirect:
+                            processed_url = youtube_m3u8_redirect
+                            logger.info(f"  SUCCESS: Converted redirected YouTube URL to M3U8: {processed_url}")
+                        else:
+                            logger.warning(f"  FAILURE: get_youtube_m3u8_link returned None for redirected YouTube URL. Using original URL as final.")
+                    else:
+                        logger.info(f"  Redirected URL is not a YouTube link or no redirect occurred. Using original URL as final.")
             else:
-                logger.info(f"  is_youtube_url returned FALSE for: {original_url}. Proceeding with general URL processing.")
-                processed_url = get_final_url(original_url)
+                logger.info(f"  Original URL is NOT a YouTube link: {original_url}. Checking for redirects.")
+                # For non-YouTube URLs, proceed with existing redirection logic
+                final_redirect_url = get_final_url(original_url)
+                if final_redirect_url != original_url:
+                    logger.info(f"  Original URL redirected to: {final_redirect_url}")
+                    # Now, check if the redirected URL is a YouTube link
+                    if is_youtube_url(final_redirect_url):
+                        logger.info(f"  Redirected URL is a YouTube link: {final_redirect_url}. Attempting yt-dlp conversion.")
+                        youtube_m3u8_redirect = get_youtube_m3u8_link(final_redirect_url)
+                        if youtube_m3u8_redirect:
+                            processed_url = youtube_m3u8_redirect
+                            logger.info(f"  SUCCESS: Converted redirected YouTube URL to M3U8: {processed_url}")
+                        else:
+                            logger.warning(f"  FAILURE: get_youtube_m3u8_link returned None for redirected YouTube URL. Using redirected URL as final.")
+                            processed_url = final_redirect_url # Use the redirected URL even if yt-dlp fails
+                    else:
+                        logger.info(f"  Redirected URL is NOT a YouTube link. Using redirected URL as final.")
+                        processed_url = final_redirect_url
+                else:
+                    logger.info(f"  No redirection occurred. Using original URL as final.")
+                    processed_url = original_url # No change, keep original_url
 
             logo = ""
             genre = "General"
