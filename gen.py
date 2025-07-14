@@ -16,7 +16,8 @@ def get_final_url(url):
         if 300 <= response.status_code < 400:
             return response.headers['Location']
         return url
-    except requests.exceptions.RequestException:
+    except requests.exceptions.RequestException as e:
+        print(f"DEBUG: Failed to get final URL for {url}: {e}")
         return url
 
 # classification mapping
@@ -69,6 +70,7 @@ def fetch_iptv_channels_csv(url):
     Fetches the channels.csv from the given URL and processes it for logo lookup.
     Returns a dictionary mapping cleaned IDs to logo URLs, and a list of original IDs for fuzzy matching.
     """
+    print(f"INFO: Attempting to fetch channels.csv from {url}")
     try:
         response = requests.get(url, timeout=15)
         response.raise_for_status()
@@ -77,7 +79,7 @@ def fetch_iptv_channels_csv(url):
 
         # Ensure 'id' column exists and get the last column for logo
         if 'id' not in df.columns:
-            print(f"Warning: 'id' column not found in {url}. Cannot use for logo lookup.")
+            print(f"ERROR: 'id' column not found in {url}. Cannot use for logo lookup.")
             return {}, []
 
         # The last column contains the logo URL
@@ -92,17 +94,17 @@ def fetch_iptv_channels_csv(url):
                 iptv_id_to_logo_map[channel_id] = logo_url
                 original_iptv_ids.append(channel_id) # Store original IDs for fuzzy matching
 
-        print(f"Successfully loaded {len(iptv_id_to_logo_map)} entries from channels.csv.")
+        print(f"INFO: Successfully loaded {len(iptv_id_to_logo_map)} entries from channels.csv.")
         return iptv_id_to_logo_map, original_iptv_ids
 
     except requests.exceptions.RequestException as e:
-        print(f"Error fetching channels.csv from {url}: {e}")
+        print(f"ERROR: Failed to fetch channels.csv from {url}: {e}")
         return {}, []
     except pd.errors.EmptyDataError:
-        print(f"Error: channels.csv from {url} is empty.")
+        print(f"ERROR: channels.csv from {url} is empty.")
         return {}, []
     except Exception as e:
-        print(f"An unexpected error occurred while processing channels.csv: {e}")
+        print(f"ERROR: An unexpected error occurred while processing channels.csv: {e}")
         return {}, []
 
 def generate_m3u_playlist():
@@ -110,28 +112,34 @@ def generate_m3u_playlist():
     Generates an M3U playlist by fetching manifest and catalog data,
     and intelligently assigning channel logos.
     """
+    print("INFO: Starting M3U playlist generation.")
     manifest_url = 'https://hilaytv.vercel.app/manifest.json'
     catalog_url = 'https://hilaytv.vercel.app/catalog/tv/maldives.json'
     iptv_channels_csv_url = 'https://raw.githubusercontent.com/iptv-org/database/refs/heads/master/data/channels.csv'
-    FUZZY_MATCH_THRESHOLD = 85 # Minimum score for a fuzzy match to be considered valid
+    FUZZY_MATCH_THRESHOLD = 85 # Minimum score for a fuzzy match using token_set_ratio
+    PARTIAL_MATCH_THRESHOLD = 90 # Minimum score for a strong unique partial match
 
     # Fetch manifest
+    print(f"INFO: Fetching manifest from {manifest_url}")
     try:
         response = requests.get(manifest_url, timeout=10)
         response.raise_for_status()
         manifest = response.json()
+        print(f"INFO: Successfully fetched manifest.json with {len(manifest.get('idPrefixes', []))} idPrefixes.")
     except requests.exceptions.RequestException as e:
-        print(f"Failed to fetch manifest.json: {e}")
+        print(f"CRITICAL: Failed to fetch manifest.json: {e}")
         return
 
     # Fetch catalog (for original logo and genre lookup)
+    print(f"INFO: Fetching catalog from {catalog_url}")
     try:
         response = requests.get(catalog_url, timeout=10)
         response.raise_for_status()
         catalog = response.json()
         catalog_metas = catalog.get("metas", [])
+        print(f"INFO: Successfully fetched catalog with {len(catalog_metas)} metas entries.")
     except requests.exceptions.RequestException as e:
-        print(f"Failed to fetch catalog: {e}")
+        print(f"CRITICAL: Failed to fetch catalog: {e}")
         return
 
     # Fetch and process iptv-org channels.csv for logo lookup
@@ -148,12 +156,17 @@ def generate_m3u_playlist():
                 genres_list.append(g.split("|")[0].strip())
         genre = classify_genre_smart(genres_list)
         id_data_map[channel_id] = {"logo": logo, "genre": genre}
+    print(f"INFO: Built ID data map from catalog with {len(id_data_map)} entries.")
 
     # Prepare M3U header
     m3u_content = "#EXTM3U\n\n"
 
     processed_count = 0
-    for prefix in manifest.get('idPrefixes', []):
+    total_prefixes = len(manifest.get('idPrefixes', []))
+    print(f"INFO: Starting to process {total_prefixes} channel prefixes.")
+
+    for i, prefix in enumerate(manifest.get('idPrefixes', [])):
+        print(f"\n--- Processing channel {i+1}/{total_prefixes}: '{prefix}' ---")
         current_prefix_lower = prefix.lower()
         clean_prefix_no_mv = current_prefix_lower.replace(".mv", "")
         
@@ -161,23 +174,26 @@ def generate_m3u_playlist():
         channel_url_fallback = f"https://hilaytv.vercel.app/stream/tv/{prefix}.json"
 
         channel_data = None
+        print(f"DEBUG: Trying primary URL: {channel_url_primary}")
         try:
             response_primary = requests.get(channel_url_primary, timeout=10)
             response_primary.raise_for_status()
             channel_data = response_primary.json()
+            print(f"INFO: Primary URL successful for {prefix}.")
         except (requests.exceptions.RequestException, json.JSONDecodeError) as e:
-            print(f"Primary URL failed for {prefix} ({channel_url_primary}): {e}. Trying fallback.")
+            print(f"WARNING: Primary URL failed for {prefix} ({channel_url_primary}): {e}. Trying fallback.")
             channel_data = None
 
         if not channel_data or not channel_data.get('streams'):
+            print(f"DEBUG: Trying fallback URL: {channel_url_fallback}")
             try:
                 response_fallback = requests.get(channel_url_fallback, timeout=10)
                 response_fallback.raise_for_status()
                 channel_data = response_fallback.json()
                 if channel_data and channel_data.get('streams'):
-                    print(f"Successfully used fallback URL for {prefix}")
+                    print(f"INFO: Successfully used fallback URL for {prefix}.")
             except (requests.exceptions.RequestException, json.JSONDecodeError) as e:
-                print(f"Fallback URL also failed for {prefix} ({channel_url_fallback}): {e}. Skipping.")
+                print(f"ERROR: Fallback URL also failed for {prefix} ({channel_url_fallback}): {e}. Skipping channel.")
                 continue
 
         if channel_data and channel_data.get('streams'):
@@ -185,9 +201,10 @@ def generate_m3u_playlist():
             name = stream.get('name', prefix)
             original_url = stream.get('url', '')
             if not original_url:
-                print(f"Skipping {prefix}: No URL found after trying both channels")
+                print(f"WARNING: Skipping {prefix}: No URL found after trying both channels.")
                 continue
             final_url = get_final_url(original_url)
+            print(f"DEBUG: Original URL: {original_url}, Final URL: {final_url}")
 
             # --- Logo Assignment Logic ---
             logo = ""
@@ -195,7 +212,7 @@ def generate_m3u_playlist():
             # Attempt 1: Direct match (case-insensitive, including .mv)
             if current_prefix_lower in iptv_id_to_logo_map:
                 logo = iptv_id_to_logo_map[current_prefix_lower]
-                print(f"Logo for '{prefix}' found via direct exact match in channels.csv.")
+                print(f"INFO: Logo for '{prefix}' found via direct exact match in channels.csv.")
             else:
                 # Attempt 2: Direct match ignoring .mv, handle multiple matches
                 potential_matches_no_mv = [
@@ -205,41 +222,87 @@ def generate_m3u_playlist():
 
                 if len(potential_matches_no_mv) == 1:
                     logo = iptv_id_to_logo_map[potential_matches_no_mv[0]]
-                    print(f"Logo for '{prefix}' found via direct match (ignoring .mv) in channels.csv.")
+                    print(f"INFO: Logo for '{prefix}' found via direct match (ignoring .mv) in channels.csv.")
                 elif len(potential_matches_no_mv) > 1:
                     # If multiple matches after ignoring .mv, prioritize the one with .mv if current_prefix also has it
                     if ".mv" in current_prefix_lower:
                         mv_match = next((m for m in potential_matches_no_mv if ".mv" in m), None)
                         if mv_match:
                             logo = iptv_id_to_logo_map[mv_match]
-                            print(f"Logo for '{prefix}' found via direct match (prioritizing .mv) in channels.csv.")
+                            print(f"INFO: Logo for '{prefix}' found via direct match (prioritizing .mv) in channels.csv.")
                         else: # If multiple, but none with .mv, just take the first
                             logo = iptv_id_to_logo_map[potential_matches_no_mv[0]]
-                            print(f"Logo for '{prefix}' found via direct match (multiple, taking first) in channels.csv.")
+                            print(f"WARNING: Logo for '{prefix}' found via direct match (multiple, no .mv match, taking first) in channels.csv.")
                     else: # If current_prefix doesn't have .mv, just take the first match without .mv
                         logo = iptv_id_to_logo_map[potential_matches_no_mv[0]]
-                        print(f"Logo for '{prefix}' found via direct match (multiple, taking first) in channels.csv.")
+                        print(f"WARNING: Logo for '{prefix}' found via direct match (multiple, taking first) in channels.csv.")
+                else:
+                    print(f"DEBUG: No direct match (exact or ignoring .mv) found for '{prefix}'.")
 
-            # Attempt 3: Fuzzy match (if no direct match found yet)
+            # Attempt 3: Fuzzy match using token_set_ratio (if no logo found yet)
             if not logo and iptv_id_to_logo_map: # Only try fuzzy if iptv_channels_csv was loaded
-                # Use original_iptv_ids for fuzzy matching to get the full ID back
-                best_fuzzy_result = process.extractOne(clean_prefix_no_mv, original_iptv_ids, scorer=fuzz.token_set_ratio)
+                best_fuzzy_result_token = process.extractOne(clean_prefix_no_mv, original_iptv_ids, scorer=fuzz.token_set_ratio)
                 
-                if best_fuzzy_result and best_fuzzy_result[1] >= FUZZY_MATCH_THRESHOLD:
-                    fuzzy_matched_id = best_fuzzy_result[0].lower()
+                if best_fuzzy_result_token and best_fuzzy_result_token[1] >= FUZZY_MATCH_THRESHOLD:
+                    fuzzy_matched_id = best_fuzzy_result_token[0].lower()
                     logo = iptv_id_to_logo_map.get(fuzzy_matched_id, "")
                     if logo:
-                        print(f"Logo for '{prefix}' found via fuzzy match ('{best_fuzzy_result[0]}', score: {best_fuzzy_result[1]}) in channels.csv.")
+                        print(f"INFO: Logo for '{prefix}' found via fuzzy (token_set_ratio) match ('{best_fuzzy_result_token[0]}', score: {best_fuzzy_result_token[1]}) in channels.csv.")
                 else:
-                    print(f"Fuzzy match for '{prefix}' not close enough (score: {best_fuzzy_result[1] if best_fuzzy_result else 'N/A'}).")
+                    print(f"DEBUG: Fuzzy (token_set_ratio) match for '{prefix}' not close enough (score: {best_fuzzy_result_token[1] if best_fuzzy_result_token else 'N/A'}).")
+
+            # Attempt 4: Unique strong partial match (if no logo found yet)
+            if not logo and iptv_id_to_logo_map:
+                strong_partial_matches = []
+                for csv_id in original_iptv_ids:
+                    # Compare the cleaned prefix with the cleaned CSV ID
+                    score = fuzz.partial_ratio(clean_prefix_no_mv, csv_id.replace(".mv", ""))
+                    if score >= PARTIAL_MATCH_THRESHOLD:
+                        strong_partial_matches.append((csv_id, score))
+                
+                if len(strong_partial_matches) == 1:
+                    # If exactly one strong partial match, use its logo
+                    matched_id_from_csv = strong_partial_matches[0][0].lower()
+                    logo = iptv_id_to_logo_map.get(matched_id_from_csv, "")
+                    if logo:
+                        print(f"INFO: Logo for '{prefix}' found via unique strong partial match ('{strong_partial_matches[0][0]}', score: {strong_partial_matches[0][1]}) in channels.csv.")
+                elif len(strong_partial_matches) > 1:
+                    # Handle multiple strong partial matches, prioritizing .mv if present in prefix
+                    selected_match_id = None
+                    if ".mv" in current_prefix_lower:
+                        # Find a match that also contains .mv among the strong partial matches
+                        mv_matches_in_strong_partials = [m for m, s in strong_partial_matches if ".mv" in m]
+                        if mv_matches_in_strong_partials:
+                            # If multiple .mv matches, pick the one with the highest score among them
+                            best_mv_match = max(
+                                [(m, s) for m, s in strong_partial_matches if m in mv_matches_in_strong_partials],
+                                key=lambda item: item[1]
+                            )
+                            selected_match_id = best_mv_match[0]
+                            print(f"INFO: Logo for '{prefix}' found via strong partial match (prioritizing .mv) in channels.csv.")
+                        else:
+                            # No .mv match found among strong partials, take the overall best score
+                            best_overall_match = max(strong_partial_matches, key=lambda item: item[1])
+                            selected_match_id = best_overall_match[0]
+                            print(f"WARNING: Logo for '{prefix}' found via strong partial match (no .mv match found, taking best score) in channels.csv.")
+                    else:
+                        # Prefix does not contain .mv, just take the overall best score
+                        best_overall_match = max(strong_partial_matches, key=lambda item: item[1])
+                        selected_match_id = best_overall_match[0]
+                        print(f"INFO: Logo for '{prefix}' found via strong partial match (taking best score) in channels.csv.")
+                    
+                    if selected_match_id:
+                        logo = iptv_id_to_logo_map.get(selected_match_id.lower(), "")
+                else:
+                    print(f"DEBUG: No strong partial match found for '{prefix}'.")
 
             # Fallback to original catalog logo if no logo found from iptv-org CSV
             if not logo:
                 logo = id_data_map.get(clean_prefix_no_mv, {}).get("logo", "")
                 if logo:
-                    print(f"Logo for '{prefix}' falling back to original catalog URL.")
+                    print(f"INFO: Logo for '{prefix}' falling back to original catalog URL.")
                 else:
-                    print(f"No logo found for '{prefix}' from any source.")
+                    print(f"WARNING: No logo found for '{prefix}' from any source.")
 
             # --- End Logo Assignment Logic ---
 
@@ -249,17 +312,18 @@ def generate_m3u_playlist():
             m3u_content += f'#EXTINF:-1 tvg-id="{prefix}" tvg-name="{name}" tvg-logo="{logo}" group-title="{genre}",{name}\n'
             m3u_content += f"{final_url}\n\n"
 
-            print(f"Processed: {name} - Original: {original_url} - Final: {final_url}")
+            print(f"INFO: Processed channel '{name}'.")
             processed_count += 1
         else:
-            print(f"Skipping {prefix}: No stream data found in either URL.")
+            print(f"WARNING: Skipping {prefix}: No stream data found in either URL.")
 
     filename = 'peartv.m3u'
     with open(filename, 'w', encoding='utf-8') as f:
         f.write(m3u_content)
 
-    print(f"\nM3U playlist generated: {filename}")
-    print(f"Total channels processed: {processed_count}/{len(manifest.get('idPrefixes', []))}")
+    print(f"\nINFO: M3U playlist generated: {filename}")
+    print(f"INFO: Total channels processed: {processed_count}/{total_prefixes}")
+    print("INFO: M3U playlist generation complete.")
 
 if __name__ == "__main__":
     generate_m3u_playlist()
