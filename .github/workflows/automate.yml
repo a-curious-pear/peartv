@@ -12,7 +12,7 @@ on:
 jobs:
   build:
     # The runner environment where the workflow steps will execute.
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     # Permissions needed for the workflow. 'contents: write' is essential
     # for the action to be able to commit and push the generated file back to your repository.
