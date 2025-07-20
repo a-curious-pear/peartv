@@ -1,0 +1,6 @@
+requests
+pandas
+thefuzz
+python-Levenshtein
+fake_useragent
+brotli
