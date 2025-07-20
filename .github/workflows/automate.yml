@@ -1,0 +1,66 @@
+name: Generate TV Playlist
+
+on:
+  schedule:
+    # Runs every 30 minutes.
+    # Note: GitHub Actions schedules are based on UTC time.
+    # Adjust cron expression if you need it to align with a specific local time.
+    - cron: '30 */6 * * *'
+  # Allows you to manually trigger the workflow from the 'Actions' tab in GitHub.
+  workflow_dispatch:
+
+jobs:
+  build:
+    # The runner environment where the workflow steps will execute.
+    runs-on: ubuntu-22.04
+
+    # Permissions needed for the workflow. 'contents: write' is essential
+    # for the action to be able to commit and push the generated file back to your repository.
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository content
+        # This action checks out your repository onto the runner, making your
+        # 'gen.py' script and 'requirements.txt' available.
+        uses: actions/checkout@v4
+
+      - name: Set up Python environment
+        # This action sets up a Python environment on the runner.
+        uses: actions/setup-python@v5
+        with:
+          # Specify the desired Python version. Using a specific minor version
+          # like '3.10' or '3.11' is often better than '3.x' for consistency.
+          python-version: '3.10' # Recommended to be specific, e.g., '3.9', '3.10', '3.11'
+
+      - name: Install Python dependencies
+        # This step installs packages listed in your 'requirements.txt' file.
+        # Your 'gen.py' script depends on 'requests', so this is crucial.
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Execute Python script to generate playlist
+        # This command runs your 'gen.py' script.
+        # Since 'actions/checkout' sets the repository root as the working directory,
+        # 'python gen.py' will find and execute your script correctly.
+        run: python gen.py
+
+      - name: Commit and push the generated 'peartv.m3u' file
+        # These Git commands run after your Python script has created 'peartv.m3u'.
+        # They will add the new file, commit it, and push it back to your GitHub repo.
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          
+          # Check if there are any changes to commit (e.g., if peartv.m3u was created/updated)
+          # --allow-empty-message and --no-verify are often used in automation
+          git add peartv.m3u # Explicitly add only the generated file
+          
+          # Check if there are any pending changes to commit (this prevents empty commits unless specifically allowed)
+          if git diff-index --quiet HEAD; then
+            echo "No changes to commit. Skipping commit and push."
+          else
+            git commit -m "Automated update of peartv.m3u"
+            git push
+          fi
