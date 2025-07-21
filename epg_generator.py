@@ -5,13 +5,25 @@ import gzip
 import xml.etree.ElementTree as ET
 from io import BytesIO
 
+def normalize_string(s):
+    """
+    Normalizes a string for comparison: converts to lowercase, removes spaces,
+    and removes common non-alphanumeric characters.
+    """
+    if s is None:
+        return ""
+    s = s.lower()
+    s = re.sub(r'\s+', '', s) # Remove all whitespace
+    s = re.sub(r'[^a-z0-9]', '', s) # Remove non-alphanumeric characters (keep only letters and numbers)
+    return s
+
 def download_file(url, local_filename):
     """
     Downloads a file from a URL.
     """
     print(f"Downloading {url} to {local_filename}...")
     try:
-        with requests.get(url, stream=True, timeout=15) as r:
+        with requests.get(url, stream=True, timeout=30) as r:
             r.raise_for_status()
             with open(local_filename, 'wb') as f:
                 for chunk in r.iter_content(chunk_size=8192):
@@ -84,14 +96,23 @@ def download_and_parse_epg(epg_url):
         response.raise_for_status()
 
         xml_content = response.content
-        # Check if content is gzipped by header or file extension
         if response.headers.get('Content-Encoding') == 'gzip' or epg_url.endswith('.gz'):
             print("Content is gzipped, decompressing...")
             xml_content = gzip.decompress(xml_content)
         
-        # Parse the XML content
         root = ET.fromstring(xml_content)
         print("EPG XMLTV data downloaded and parsed successfully.")
+        
+        num_epg_channels = len(root.findall('channel'))
+        num_epg_programs = len(root.findall('programme'))
+        print(f"EPG XMLTV contains {num_epg_channels} channels and {num_epg_programs} programs.")
+        if num_epg_channels > 0:
+            print("First few EPG channel IDs and display names:")
+            for i, channel_elem in enumerate(root.findall('channel')):
+                if i >= 5: break
+                display_name = channel_elem.find('display-name').text if channel_elem.find('display-name') is not None else 'N/A'
+                print(f"  - ID: {channel_elem.get('id')}, Name: {display_name}")
+
         return root
 
     except requests.exceptions.RequestException as e:
@@ -99,14 +120,15 @@ def download_and_parse_epg(epg_url):
     except gzip.BadGzipFile:
         print("Error: Could not decompress gzipped EPG file. It might be corrupted or not a valid gzip.")
     except ET.ParseError as e:
-        print(f"Error parsing XMLTV content: {e}")
+        print(f"Error parsing XMLTV content: {e}. Raw content snippet: {xml_content[:500].decode('utf-8', errors='ignore')}...")
     except Exception as e:
         print(f"An unexpected error occurred during EPG download/parsing: {e}")
     return None
 
 def match_channels_with_epg(m3u_channels, epg_root):
     """
-    Matches M3U channels with EPG data and collects relevant EPG elements.
+    Matches M3U channels with EPG data using tvg-id first, then tvg-name with normalization.
+    Collects relevant EPG elements.
 
     Args:
         m3u_channels (list): List of dictionaries from M3U parsing.
@@ -120,8 +142,17 @@ def match_channels_with_epg(m3u_channels, epg_root):
     matched_epg_channels = {}
     matched_epg_programs = {}
 
-    # Create a lookup for EPG channels by their 'id' attribute
-    epg_channel_lookup = {channel_elem.get('id'): channel_elem for channel_elem in epg_root.findall('channel')}
+    # Create lookups for EPG channels
+    epg_channel_by_id = {channel_elem.get('id'): channel_elem for channel_elem in epg_root.findall('channel')}
+    epg_channel_by_normalized_name = {}
+    for channel_elem in epg_root.findall('channel'):
+        display_name_elem = channel_elem.find('display-name')
+        if display_name_elem is not None and display_name_elem.text:
+            normalized_name = normalize_string(display_name_elem.text)
+            # Store a list of channels for a normalized name, as multiple EPG channels might have similar names
+            if normalized_name not in epg_channel_by_normalized_name:
+                epg_channel_by_normalized_name[normalized_name] = []
+            epg_channel_by_normalized_name[normalized_name].append(channel_elem)
 
     # Group programs by channel ID for efficient lookup
     epg_program_lookup = {}
@@ -137,12 +168,40 @@ def match_channels_with_epg(m3u_channels, epg_root):
 
     for m3u_channel in m3u_channels:
         m3u_tvg_id = m3u_channel.get('tvg_id')
-        if m3u_tvg_id and m3u_tvg_id in epg_channel_lookup:
-            matched_epg_channels[m3u_tvg_id] = epg_channel_lookup[m3u_tvg_id]
-            matched_epg_programs[m3u_tvg_id] = epg_program_lookup.get(m3u_tvg_id, [])
+        m3u_tvg_name = m3u_channel.get('tvg_name')
+        m3u_channel_name = m3u_channel.get('name', 'Unknown Channel')
+        
+        matched_epg_id = None
+        match_method = "Skipped"
+
+        # 1. Try matching by tvg-id
+        if m3u_tvg_id and m3u_tvg_id in epg_channel_by_id:
+            matched_epg_id = m3u_tvg_id
+            match_method = "tvg-id"
+        # 2. If tvg-id fails, try matching by normalized tvg-name
+        elif m3u_tvg_name:
+            normalized_m3u_tvg_name = normalize_string(m3u_tvg_name)
+            if normalized_m3u_tvg_name in epg_channel_by_normalized_name:
+                # If multiple channels match the normalized name, pick the first one for simplicity
+                # or add more sophisticated logic if needed (e.g., closest match to original name)
+                matched_epg_id = epg_channel_by_normalized_name[normalized_m3u_tvg_name][0].get('id')
+                match_method = "tvg-name (normalized)"
+        
+        if matched_epg_id:
+            matched_epg_channels[matched_epg_id] = epg_channel_by_id[matched_epg_id]
+            matched_epg_programs[matched_epg_id] = epg_program_lookup.get(matched_epg_id, [])
             matched_count += 1
+            print(f"  MATCHED ({match_method}): M3U '{m3u_channel_name}' (tvg-id: '{m3u_tvg_id}', tvg-name: '{m3u_tvg_name}') with EPG channel ID: '{matched_epg_id}'.")
         else:
             skipped_count += 1
+            reason = ""
+            if not m3u_tvg_id and not m3u_tvg_name:
+                reason = "No 'tvg-id' or 'tvg-name' in M3U entry."
+            elif m3u_tvg_id and m3u_tvg_id not in epg_channel_by_id:
+                reason = f"No matching EPG channel ID found for tvg-id: '{m3u_tvg_id}'."
+            elif m3u_tvg_name and normalize_string(m3u_tvg_name) not in epg_channel_by_normalized_name:
+                reason = f"No matching EPG channel name found for normalized tvg-name: '{normalize_string(m3u_tvg_name)}'."
+            print(f"  SKIPPED: M3U '{m3u_channel_name}' (tvg-id: '{m3u_tvg_id}', tvg-name: '{m3u_tvg_name}') - {reason}")
 
     print(f"\nMatching complete. Found {matched_count} channels with EPG data, skipped {skipped_count} channels.")
     return matched_epg_channels, matched_epg_programs
@@ -174,12 +233,10 @@ def generate_custom_xmltv(matched_channels, matched_programs, output_file_name='
     # Create an ElementTree object and write to file
     tree = ET.ElementTree(tv_root)
     try:
-        # Use a custom XML declaration to ensure it's always utf-8
-        # pretty_print is not a standard ElementTree argument, it's from lxml.
-        # For standard ET, we can't pretty print directly.
-        # We'll write it as is and rely on the file being valid XML.
         tree.write(output_file_name, encoding='utf-8', xml_declaration=True)
         print(f"Custom EPG file '{output_file_name}' created successfully.")
+        if not matched_channels and not matched_programs:
+            print("WARNING: The generated custom_epg.xml file is empty because no channels were matched.")
     except Exception as e:
         print(f"Error writing custom EPG file: {e}")
 
@@ -219,13 +276,15 @@ def main():
 
     if not matched_epg_channels:
         print("No channels from your M3U could be matched with the EPG data. The generated EPG file will be empty.")
-        return
+        pass # Proceed to generate an empty file as per request to always overwrite.
 
     # --- Generate Custom XMLTV ---
     generate_custom_xmltv(matched_epg_channels, matched_epg_programs, custom_epg_output_file)
 
     print("\n--- Automation Complete ---")
     print(f"The '{custom_epg_output_file}' file has been generated.")
+    print("\nTo diagnose the empty file, check the GitHub Actions run logs for messages like 'SKIPPED' or 'Error parsing XMLTV'.")
+    print("Specifically, look at the 'Run EPG Generator Script' step in your workflow run details.")
 
 if __name__ == "__main__":
     main()
