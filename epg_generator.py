@@ -21,7 +21,7 @@ M3U_URL = "https://raw.githubusercontent.com/a-curious-pear/peartv/main/peartv.m
 EPG_SOURCES = [
     "https://epgshare01.online/epgshare01/epg_ripper_ALL_SOURCES1.xml.gz"
 ]
-OUTPUT_FILE = "epg.xml"
+OUTPUT_FILE = "custom_epg.xml"
 CACHE_FILE = "epg_cache.json"
 CACHE_EXPIRY_DAYS = 1
 MAX_RETRIES = 3
