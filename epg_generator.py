@@ -1,124 +1,137 @@
 #!/usr/bin/env python3
 """
-EPG Generator that matches M3U tvg-ids exactly
-Generates an EPG where channel IDs are forced to match your M3U's tvg-id values
+Memory-efficient EPG Generator for Large Files
+Processes 300MB+ EPG files without loading entire file into memory
+Generates custom_epg.xml with exact tvg-id matching
 """
 
 import os
 import re
 import requests
-import xml.etree.ElementTree as ET
-from datetime import datetime
 import gzip
 import io
+import xml.sax
+from xml.sax.handler import ContentHandler
+from datetime import datetime
 
 # Configuration
 M3U_URL = "https://raw.githubusercontent.com/a-curious-pear/peartv/main/peartv.m3u"
 EPG_SOURCE = "https://epgshare01.online/epgshare01/epg_ripper_ALL_SOURCES1.xml.gz"
 OUTPUT_FILE = "custom_epg.xml"
+CHUNK_SIZE = 1024 * 1024  # 1MB chunks for streaming
 
-def get_m3u_tvg_ids():
-    """Extract all tvg-id values from the M3U file"""
-    try:
-        response = requests.get(M3U_URL)
-        response.raise_for_status()
-        return set(re.findall(r'tvg-id="([^"]+)"', response.text))
-    except Exception as e:
-        print(f"Error fetching M3U: {e}")
-        return set()
+class M3UParser:
+    """Extracts tvg-ids from M3U file"""
+    @staticmethod
+    def get_tvg_ids():
+        try:
+            response = requests.get(M3U_URL)
+            response.raise_for_status()
+            return set(re.findall(r'tvg-id="([^"]+)"', response.text))
+        except Exception as e:
+            print(f"Error fetching M3U: {e}")
+            return set()
 
-def download_and_filter_epg():
-    """Download EPG and adapt it to match M3U tvg-ids"""
-    tvg_ids = get_m3u_tvg_ids()
+class EPGFilter(ContentHandler):
+    """SAX parser to filter and rewrite EPG with matching tvg-ids"""
+    def __init__(self, output_file, tvg_ids):
+        self.output_file = output_file
+        self.tvg_ids = {id.lower(): id for id in tvg_ids}  # Case-insensitive lookup
+        self.current_channel = None
+        self.matched_channels = set()
+        self.in_programme = False
+        self.buffer = []
+        self.program_count = 0
+        self.channel_count = 0
+
+    def startDocument(self):
+        self.output_file.write('<?xml version="1.0" encoding="UTF-8"?>\n')
+        self.output_file.write('<!DOCTYPE tv SYSTEM "xmltv.dtd">\n')
+        self.output_file.write('<tv>\n')
+
+    def endDocument(self):
+        self.output_file.write('</tv>\n')
+        print(f"Matched {self.channel_count} channels with {self.program_count} programs")
+
+    def startElement(self, name, attrs):
+        if name == "channel":
+            epg_id = attrs.get("id", "").lower()
+            if epg_id in self.tvg_ids:
+                self.current_channel = self.tvg_ids[epg_id]
+                self.buffer.append(f'<channel id="{self.current_channel}">')
+                self.channel_count += 1
+                self.matched_channels.add(epg_id)
+        elif name == "programme":
+            channel = attrs.get("channel", "").lower()
+            if channel in self.matched_channels:
+                self.in_programme = True
+                self.buffer.append(
+                    f'<programme channel="{self.tvg_ids[channel]}" '
+                    f'start="{attrs.get("start", "")}" '
+                    f'stop="{attrs.get("stop", "")}">'
+                )
+                self.program_count += 1
+        elif self.current_channel or self.in_programme:
+            self.buffer.append(f'<{name}')
+            for k, v in attrs.items():
+                self.buffer.append(f' {k}="{v}"')
+            self.buffer.append('>')
+
+    def characters(self, content):
+        if self.buffer:
+            self.buffer.append(content)
+
+    def endElement(self, name):
+        if name == "channel" and self.current_channel:
+            self.buffer.append('</channel>')
+            self._flush_buffer()
+            self.current_channel = None
+        elif name == "programme" and self.in_programme:
+            self.buffer.append('</programme>')
+            self._flush_buffer()
+            self.in_programme = False
+        elif self.buffer:
+            self.buffer.append(f'</{name}>')
+
+    def _flush_buffer(self):
+        if self.buffer:
+            self.output_file.write(''.join(self.buffer))
+            self.buffer = []
+
+def download_epg():
+    """Stream download and process EPG with minimal memory usage"""
+    tvg_ids = M3UParser.get_tvg_ids()
     if not tvg_ids:
         print("No tvg-ids found in M3U")
         return False
 
     try:
-        # Download EPG
-        print(f"Downloading EPG from {EPG_SOURCE}...")
-        response = requests.get(EPG_SOURCE, stream=True, timeout=30)
-        response.raise_for_status()
-        
-        # Decompress and parse
-        with gzip.GzipFile(fileobj=io.BytesIO(response.content)) as gz_file:
-            epg_content = gz_file.read().decode('utf-8')
-        
-        print("Processing EPG data...")
-        root = ET.fromstring(epg_content)
-        
-        # Create new EPG structure
-        new_root = ET.Element("tv")
-        channel_id_map = {}
-        matched_channels = 0
-        matched_programs = 0
-        
-        # First pass: find matching channels and create mapping
-        for channel in root.findall("channel"):
-            epg_id = channel.get("id", "")
+        print(f"Downloading and processing {EPG_SOURCE}...")
+        with requests.get(EPG_SOURCE, stream=True, timeout=60) as response:
+            response.raise_for_status()
             
-            # Check if EPG channel matches any tvg-id (case insensitive)
-            for tvg_id in tvg_ids:
-                if epg_id.lower() == tvg_id.lower():
-                    # Create new channel node with exact tvg-id from M3U
-                    new_channel = ET.SubElement(new_root, "channel", id=tvg_id)
+            with gzip.GzipFile(fileobj=response.raw) as gz_file:
+                with open(OUTPUT_FILE, 'w', encoding='utf-8') as out_file:
+                    parser = xml.sax.make_parser()
+                    parser.setContentHandler(EPGFilter(out_file, tvg_ids))
                     
-                    # Copy all display names
-                    for display in channel.findall("display-name"):
-                        ET.SubElement(new_channel, "display-name").text = display.text
+                    # Process in chunks to avoid memory overload
+                    while True:
+                        chunk = gz_file.read(CHUNK_SIZE)
+                        if not chunk:
+                            break
+                        parser.feed(chunk)
                     
-                    # Copy other elements (icon, etc.)
-                    for child in channel:
-                        if child.tag not in ["display-name"]:
-                            new_child = ET.SubElement(new_channel, child.tag)
-                            new_child.text = child.text
-                            for k, v in child.attrib.items():
-                                new_child.set(k, v)
-                    
-                    channel_id_map[epg_id] = tvg_id
-                    matched_channels += 1
-                    break
-
-        # Second pass: copy programs for matched channels
-        for program in root.findall("programme"):
-            original_id = program.get("channel", "")
-            if original_id in channel_id_map:
-                # Create program with corrected channel ID
-                new_program = ET.SubElement(new_root, "programme", {
-                    "channel": channel_id_map[original_id],
-                    "start": program.get("start", ""),
-                    "stop": program.get("stop", "")
-                })
-                
-                # Copy all program elements
-                for child in program:
-                    new_child = ET.SubElement(new_program, child.tag)
-                    new_child.text = child.text
-                    for k, v in child.attrib.items():
-                        new_child.set(k, v)
-                
-                matched_programs += 1
-
-        print(f"Matched {matched_channels} channels and {matched_programs} programs")
+                    parser.close()
         
-        # Save the new EPG
-        tree = ET.ElementTree(new_root)
-        tree.write(OUTPUT_FILE, encoding='utf-8', xml_declaration=True)
-        
-        # Add DOCTYPE manually
-        with open(OUTPUT_FILE, 'r+', encoding='utf-8') as f:
-            content = f.read()
-            f.seek(0, 0)
-            f.write('<?xml version="1.0" encoding="UTF-8"?>\n<!DOCTYPE tv SYSTEM "xmltv.dtd">\n' + content)
-        
+        print(f"EPG successfully generated at {OUTPUT_FILE}")
         return True
 
     except Exception as e:
         print(f"EPG processing error: {e}")
+        if os.path.exists(OUTPUT_FILE):
+            os.remove(OUTPUT_FILE)
         return False
 
 if __name__ == "__main__":
-    if download_and_filter_epg():
-        print(f"Successfully generated compatible EPG at {OUTPUT_FILE}")
-    else:
-        print("Failed to generate EPG")
+    download_epg()
