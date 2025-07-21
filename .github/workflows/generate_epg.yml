@@ -51,18 +51,15 @@ jobs:
     - name: Commit and push the generated 'custom_epg.xml' file
       # These Git commands run after your Python script has created 'custom_epg.xml'.
       # They will add the new file, commit it, and push it back to your GitHub repo.
+      # This step will always attempt to commit and push, overwriting existing content.
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         
-        # Explicitly add only the generated file
+        # Explicitly add the generated file to the staging area.
         git add custom_epg.xml
         
-        # Check if there are any pending changes to commit
-        # This prevents empty commits if the EPG data hasn't changed.
-        if git diff-index --quiet HEAD; then
-          echo "No changes to commit. Skipping commit and push."
-        else
-          git commit -m "Automated EPG update for custom_epg.xml"
-          git push
-        fi
+        # Always commit and push, even if the file content is identical.
+        # The --allow-empty flag ensures a commit is created even if no changes were staged.
+        git commit -m "Automated EPG update for custom_epg.xml" --allow-empty
+        git push
