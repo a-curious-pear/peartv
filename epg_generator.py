@@ -19,8 +19,7 @@ from xml.sax import make_parser, handler
 # Constants
 M3U_URL = "https://raw.githubusercontent.com/a-curious-pear/peartv/main/peartv.m3u"
 EPG_SOURCES = [
-    "https://epgshare01.online/epgshare01/epg_ripper_USUKCA.xml.gz",  # Smaller regional file
-    "https://epgshare01.online/epgshare01/epg_ripper_ASIA.xml.gz"     # Another regional file
+    "https://epgshare01.online/epgshare01/epg_ripper_ALL_SOURCES1.xml.gz"
 ]
 OUTPUT_FILE = "epg.xml"
 CACHE_FILE = "epg_cache.json"
