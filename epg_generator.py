@@ -1,112 +1,84 @@
 #!/usr/bin/env python3
 """
-Robust EPG Generator with Exact tvg-id Matching
-Memory-efficient processing with thorough error checking
+GitHub-Compatible EPG Generator with Print Logging
+Uses print() for logging visible in GitHub Actions
 """
 
 import os
 import re
 import requests
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
+from xml.sax import make_parser, handler
+from xml.sax.saxutils import escape
 import gzip
 import io
-import time
-from xml.sax import make_parser, handler
-from difflib import SequenceMatcher
+from collections import defaultdict
 
 # Configuration
 M3U_URL = "https://raw.githubusercontent.com/a-curious-pear/peartv/main/peartv.m3u"
 EPG_SOURCE = "https://epg.pw/xmltv/epg.xml.gz"
 OUTPUT_FILE = "custom_epg.xml"
 CHUNK_SIZE = 1024 * 1024  # 1MB chunks for streaming
-MATCH_THRESHOLD = 0.8  # Similarity threshold for fuzzy matching
 MAX_RETRIES = 3
+GMT5 = timezone(timedelta(hours=5))  # GMT+5 timezone
 
-class EPGChannelCollector(handler.ContentHandler):
-    """Collects channel data from EPG while preserving original IDs"""
+class EPGHandler(handler.ContentHandler):
+    """SAX handler for processing EPG data"""
     def __init__(self):
         self.channels = {}
+        self.programs = defaultdict(list)
         self.current_channel = None
+        self.current_program = None
+        self.current_element = None
         self.current_text = ""
-    
+
     def startElement(self, name, attrs):
+        self.current_element = name
         if name == "channel":
-            self.current_channel = {
-                'id': attrs.get("id", "").lower(),
-                'names': set(),
+            self.current_channel = attrs.get("id", "").lower()
+            self.channels[self.current_channel] = {
+                'display_names': [],
                 'original_id': attrs.get("id", "")
             }
-        self.current_text = ""
-    
-    def characters(self, content):
-        self.current_text += content
-    
-    def endElement(self, name):
-        if name == "channel" and self.current_channel:
-            self.channels[self.current_channel['id']] = self.current_channel
-            self.current_channel = None
-        elif name == "display-name" and self.current_channel:
-            clean_name = self.current_text.strip().lower()
-            if clean_name:
-                self.current_channel['names'].add(clean_name)
-        self.current_text = ""
+        elif name == "programme":
+            self.current_program = {
+                'channel': attrs.get("channel", "").lower(),
+                'start': self.parse_time(attrs.get("start", "")),
+                'stop': self.parse_time(attrs.get("stop", "")),
+                'title': "",
+                'desc': ""
+            }
 
-class EPGFilter(handler.ContentHandler):
-    """Filters EPG while maintaining original tvg-ids"""
-    def __init__(self, output_file, id_mapping):
-        self.output_file = output_file
-        self.id_mapping = id_mapping
-        self.current_channel = None
-        self.buffer = []
-        self.stats = {'channels': 0, 'programmes': 0}
-    
-    def startElement(self, name, attrs):
-        if name == "channel":
-            epg_id = attrs.get("id", "").lower()
-            if epg_id in self.id_mapping:
-                self.current_channel = epg_id
-                self.buffer.append(f'<channel id="{self.id_mapping[epg_id]}">')
-                self.stats['channels'] += 1
-        elif name == "programme":
-            channel = attrs.get("channel", "").lower()
-            if channel in self.id_mapping:
-                self.buffer.append(
-                    f'<programme channel="{self.id_mapping[channel]}" '
-                    f'start="{attrs.get("start", "")}" '
-                    f'stop="{attrs.get("stop", "")}">'
-                )
-                self.stats['programmes'] += 1
-        elif self.buffer:
-            self.buffer.append(f'<{name}')
-            for k, v in attrs.items():
-                self.buffer.append(f' {k}="{v}"')
-            self.buffer.append('>')
-    
     def characters(self, content):
-        if self.buffer:
-            self.buffer.append(content)
-    
+        if self.current_element in ['display-name', 'title', 'desc']:
+            self.current_text += content
+
     def endElement(self, name):
-        if not self.buffer:
-            return
-            
-        if name == "channel" and self.current_channel:
-            self.buffer.append('</channel>')
-            self._flush_buffer()
+        if name == "display-name" and self.current_channel:
+            self.channels[self.current_channel]['display_names'].append(self.current_text.strip())
+        elif name == "title" and self.current_program:
+            self.current_program['title'] = self.current_text.strip()
+        elif name == "desc" and self.current_program:
+            self.current_program['desc'] = self.current_text.strip()
+        elif name == "programme" and self.current_program:
+            self.programs[self.current_program['channel']].append(self.current_program)
+            self.current_program = None
+        elif name == "channel":
             self.current_channel = None
-        elif name == "programme":
-            self.buffer.append('</programme>')
-            self._flush_buffer()
-        else:
-            self.buffer.append(f'</{name}>')
-    
-    def _flush_buffer(self):
-        if self.buffer:
-            self.output_file.write(''.join(self.buffer))
-            self.buffer = []
+        
+        self.current_text = ""
+        self.current_element = None
+
+    def parse_time(self, time_str):
+        """Parse time string and convert to GMT+5"""
+        try:
+            dt = datetime.strptime(time_str[:14], "%Y%m%d%H%M%S")
+            return dt.replace(tzinfo=timezone.utc).astimezone(GMT5)
+        except:
+            return None
 
 def fetch_m3u_channels():
-    """Extract channels from M3U with original tvg-ids"""
+    """Fetch and parse M3U playlist"""
     try:
         response = requests.get(M3U_URL, timeout=30)
         response.raise_for_status()
@@ -115,168 +87,172 @@ def fetch_m3u_channels():
         for line in response.text.splitlines():
             line = line.strip()
             if line.startswith("#EXTINF"):
-                tvg_id = re.search(r'tvg-id="([^"]*)"', line)
-                tvg_name = re.search(r'tvg-name="([^"]*)"', line)
-                name = line.split(',')[-1].strip() if ',' in line else None
-                
                 channel = {
-                    'tvg-id': tvg_id.group(1) if tvg_id else None,
-                    'tvg-name': tvg_name.group(1) if tvg_name else None,
-                    'name': name,
-                    'original_tvg-id': tvg_id.group(1) if tvg_id else None
+                    'tvg-id': (re.search(r'tvg-id="([^"]*)"', line).group(1) 
+                              if 'tvg-id=' in line else None,
+                    'tvg-name': (re.search(r'tvg-name="([^"]*)"', line).group(1) 
+                               if 'tvg-name=' in line else None,
+                    'name': line.split(',')[-1].strip() if ',' in line else None,
+                    'original_tvg-id': None
                 }
+                if channel['tvg-id']:
+                    channel['original_tvg-id'] = channel['tvg-id']
                 channels.append(channel)
         return channels
     except Exception as e:
-        print(f"Error fetching M3U: {str(e)}")
+        print(f"[ERROR] Fetching M3U: {str(e)}")
         return []
 
-def download_epg(temp_file):
-    """Download and save EPG with retries"""
+def download_epg():
+    """Download and parse EPG data"""
     for attempt in range(MAX_RETRIES):
         try:
-            with requests.get(EPG_SOURCE, stream=True, timeout=60) as response:
-                response.raise_for_status()
-                with gzip.GzipFile(fileobj=response.raw) as gz_file:
-                    with open(temp_file, 'wb') as f_out:
-                        while True:
-                            chunk = gz_file.read(CHUNK_SIZE)
-                            if not chunk:
-                                break
-                            f_out.write(chunk)
-            return True
+            response = requests.get(EPG_SOURCE, stream=True, timeout=60)
+            response.raise_for_status()
+            
+            handler = EPGHandler()
+            parser = make_parser()
+            parser.setContentHandler(handler)
+            
+            with gzip.GzipFile(fileobj=io.BytesIO(response.content)) as gz_file:
+                parser.parse(gz_file)
+            
+            return handler.channels, handler.programs
         except Exception as e:
-            print(f"Attempt {attempt + 1} failed: {str(e)}")
+            print(f"[RETRY {attempt + 1}] EPG download failed: {str(e)}")
             if attempt == MAX_RETRIES - 1:
-                return False
+                return {}, defaultdict(list)
             time.sleep(5)
 
-def calculate_similarity(a, b):
-    """Calculate string similarity score"""
-    return SequenceMatcher(None, a, b).ratio()
-
 def create_id_mapping(m3u_channels, epg_channels):
-    """Create mapping between EPG IDs and original tvg-ids"""
+    """Create mapping between M3U and EPG channels"""
     id_mapping = {}
-    used_epg_ids = set()
     
-    # First pass: exact matches
     for channel in m3u_channels:
         if not channel['original_tvg-id']:
             continue
             
+        # Try exact match first
         for epg_id, epg_data in epg_channels.items():
             if epg_id.lower() == channel['original_tvg-id'].lower():
                 id_mapping[epg_id] = channel['original_tvg-id']
-                used_epg_ids.add(epg_id)
+                print(f"[MATCH] Exact match for {channel['original_tvg-id']}")
                 break
-    
-    # Second pass: fuzzy matching
-    for channel in m3u_channels:
-        if not channel['original_tvg-id'] or channel['original_tvg-id'].lower() in (v.lower() for v in id_mapping.values()):
-            continue
+        else:
+            # Try name matching
+            channel_names = set()
+            if channel['tvg-id']:
+                channel_names.add(channel['tvg-id'].lower())
+            if channel['tvg-name']:
+                channel_names.add(channel['tvg-name'].lower())
+            if channel['name']:
+                channel_names.add(channel['name'].lower())
+                # Add simplified version
+                simple_name = re.sub(r'[^a-z0-9]', '', channel['name'].lower())
+                if simple_name:
+                    channel_names.add(simple_name)
             
-        channel_names = set()
-        if channel['tvg-id']:
-            channel_names.add(channel['tvg-id'].lower())
-        if channel['tvg-name']:
-            channel_names.add(channel['tvg-name'].lower())
-        if channel['name']:
-            channel_names.add(channel['name'].lower())
-            simple_name = re.sub(r'[^a-z0-9]', '', channel['name'].lower())
-            if simple_name:
-                channel_names.add(simple_name)
-        
-        best_match = None
-        best_score = 0
-        
-        for epg_id, epg_data in epg_channels.items():
-            if epg_id in used_epg_ids:
-                continue
-                
-            epg_names = {epg_id.lower()}
-            epg_names.update(epg_data['names'])
+            # Find best match in EPG display names
+            best_match = None
+            best_score = 0
             
-            for epg_name in epg_names:
-                for m3u_name in channel_names:
-                    score = calculate_similarity(m3u_name, epg_name)
-                    if score > best_score and score >= MATCH_THRESHOLD:
-                        best_score = score
-                        best_match = epg_id
-        
-        if best_match:
-            id_mapping[best_match] = channel['original_tvg-id']
-            used_epg_ids.add(best_match)
+            for epg_id, epg_data in epg_channels.items():
+                if epg_id in id_mapping.values():
+                    continue
+                    
+                for epg_name in epg_data['display_names']:
+                    epg_name_lower = epg_name.lower()
+                    for m3u_name in channel_names:
+                        # Simple matching - no external deps
+                        score = len(set(m3u_name.split()) & set(epg_name_lower.split())) / \
+                                max(len(set(m3u_name.split())), 1)
+                        
+                        if score > best_score and score >= 0.5:  # 50% match threshold
+                            best_score = score
+                            best_match = epg_id
+            
+            if best_match:
+                id_mapping[best_match] = channel['original_tvg-id']
+                print(f"[MATCH] Fuzzy match ({int(best_score*100)}%) for {channel['original_tvg-id']}")
     
     return id_mapping
 
 def generate_epg():
-    """Main EPG generation process"""
-    print("Starting EPG generation...")
-    start_time = datetime.now()
+    """Main EPG generation function"""
+    print(f"[START] EPG generation at {datetime.now(GMT5).strftime('%Y-%m-%d %H:%M:%S %Z')}")
     
-    # Get M3U channels
-    print("Fetching M3U channels...")
+    # Fetch M3U channels
+    print("[STEP] Fetching M3U channels")
     m3u_channels = fetch_m3u_channels()
     if not m3u_channels:
-        print("No channels found in M3U")
+        print("[ERROR] No channels found in M3U - aborting")
         return
     
-    print(f"Found {len(m3u_channels)} channels in M3U")
+    print(f"[INFO] Found {len(m3u_channels)} channels in M3U")
     
-    # Download EPG
-    temp_file = "temp_epg.xml"
-    print(f"Downloading EPG from {EPG_SOURCE}...")
-    if not download_epg(temp_file):
-        print("Failed to download EPG")
+    # Download and parse EPG
+    print("[STEP] Downloading and parsing EPG data")
+    epg_channels, epg_programs = download_epg()
+    if not epg_channels:
+        print("[ERROR] Failed to get EPG data - aborting")
         return
     
-    # Parse EPG channels
-    print("Parsing EPG channels...")
-    channel_collector = EPGChannelCollector()
-    parser = make_parser()
-    parser.setContentHandler(channel_collector)
-    parser.parse(temp_file)
-    epg_channels = channel_collector.channels
-    print(f"Found {len(epg_channels)} EPG channels")
+    program_count = sum(len(p) for p in epg_programs.values())
+    print(f"[INFO] Found {len(epg_channels)} channels and {program_count} programs in EPG")
     
-    # Create ID mapping
-    print("Creating channel mapping...")
+    # Create channel mapping
+    print("[STEP] Creating channel mapping")
     id_mapping = create_id_mapping(m3u_channels, epg_channels)
-    print(f"Mapped {len(id_mapping)} channels")
+    print(f"[INFO] Mapped {len(id_mapping)} channels")
     
-    if not id_mapping:
-        print("No channel matches found")
-        try:
-            os.remove(temp_file)
-        except:
-            pass
-        return
-    
-    # Generate filtered EPG
-    print("Generating filtered EPG...")
-    with open(OUTPUT_FILE, 'w', encoding='utf-8') as f_out:
+    # Generate output EPG
+    print("[STEP] Generating output EPG")
+    with open(OUTPUT_FILE, "w", encoding="utf-8") as f_out:
         f_out.write('<?xml version="1.0" encoding="UTF-8"?>\n')
         f_out.write('<!DOCTYPE tv SYSTEM "xmltv.dtd">\n')
         f_out.write('<tv>\n')
         
-        filter_handler = EPGFilter(f_out, id_mapping)
-        parser = make_parser()
-        parser.setContentHandler(filter_handler)
-        parser.parse(temp_file)
+        # Process each M3U channel
+        for channel in m3u_channels:
+            if not channel['original_tvg-id']:
+                continue
+                
+            matched = False
+            program_count = 0
+            
+            # Find matching EPG channel
+            for epg_id, original_id in id_mapping.items():
+                if original_id == channel['original_tvg-id']:
+                    matched = True
+                    # Write channel info
+                    f_out.write(f'<channel id="{original_id}">\n')
+                    for name in epg_channels[epg_id]['display_names']:
+                        f_out.write(f'<display-name>{escape(name)}</display-name>\n')
+                    f_out.write('</channel>\n')
+                    
+                    # Write programs
+                    programs = epg_programs.get(epg_id, [])
+                    program_count = len(programs)
+                    for program in programs:
+                        start_time = program['start'].strftime("%Y%m%d%H%M%S %z") if program['start'] else ""
+                        stop_time = program['stop'].strftime("%Y%m%d%H%M%S %z") if program['stop'] else ""
+                        
+                        f_out.write(f'<programme channel="{original_id}" start="{start_time}" stop="{stop_time}">\n')
+                        f_out.write(f'<title>{escape(program["title"])}</title>\n')
+                        if program['desc']:
+                            f_out.write(f'<desc>{escape(program["desc"])}</desc>\n')
+                        f_out.write('</programme>\n')
+                    break
+            
+            # Print channel status
+            if matched:
+                print(f"[CHANNEL] {channel['original_tvg-id']}: Found {program_count} programs")
+            else:
+                print(f"[CHANNEL] {channel['original_tvg-id']}: No EPG data found")
         
         f_out.write('</tv>\n')
     
-    print(f"Generated EPG with {filter_handler.stats['channels']} channels and {filter_handler.stats['programmes']} programmes")
-    
-    # Clean up
-    try:
-        os.remove(temp_file)
-    except:
-        pass
-    
-    duration = (datetime.now() - start_time).total_seconds()
-    print(f"Completed in {duration:.2f} seconds")
+    print(f"[DONE] EPG generation completed at {datetime.now(GMT5).strftime('%Y-%m-%d %H:%M:%S %Z')}")
 
 if __name__ == "__main__":
     generate_epg()
