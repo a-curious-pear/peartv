@@ -4,4 +4,3 @@ thefuzz
 python-Levenshtein
 fake_useragent
 brotli
-googletrans==4.0.0-rc1
