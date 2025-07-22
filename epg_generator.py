@@ -16,7 +16,7 @@ from difflib import SequenceMatcher
 
 # Configuration
 M3U_URL = "https://raw.githubusercontent.com/a-curious-pear/peartv/main/peartv.m3u"
-EPG_SOURCE = "https://epgshare01.online/epgshare01/epg_ripper_ALL_SOURCES1.xml.gz"
+EPG_SOURCE = "https://epg.pw/xmltv/epg.xml.gz"
 OUTPUT_FILE = "custom_epg.xml"
 CHUNK_SIZE = 1024 * 1024  # 1MB chunks for streaming
 MATCH_THRESHOLD = 0.8  # Similarity threshold for fuzzy matching
