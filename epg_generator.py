@@ -17,11 +17,12 @@ from xml.sax.saxutils import escape
 import gzip
 import io
 from collections import defaultdict
+from difflib import SequenceMatcher
 from googletrans import Translator
 
 # Configuration
 M3U_URL = "https://raw.githubusercontent.com/a-curious-pear/peartv/main/peartv.m3u"
-EPG_SOURCE = "https://epg.pw/xmltv/epg.xml.gz"
+EPG_SOURCE = "https://epg.pw/xmltv/epg.xml.gz?lang=en&timezone=QXNpYS9LYXJhY2hp"
 OUTPUT_FILE = "custom_epg.xml"
 CHUNK_SIZE = 1024 * 1024  # 1MB chunks for streaming
 MAX_RETRIES = 3
@@ -130,9 +131,9 @@ def fetch_m3u_channels():
             if line.startswith("#EXTINF"):
                 channel = {
                     'tvg-id': (re.search(r'tvg-id="([^"]*)"', line).group(1) 
-                              if 'tvg-id=' in line else None,
+                              if 'tvg-id=' in line else None),
                     'tvg-name': (re.search(r'tvg-name="([^"]*)"', line).group(1) 
-                               if 'tvg-name=' in line else None,
+                               if 'tvg-name=' in line else None),
                     'name': line.split(',')[-1].strip() if ',' in line else None,
                     'original_tvg-id': None
                 }
