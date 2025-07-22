@@ -87,16 +87,16 @@ def fetch_m3u_channels():
         for line in response.text.splitlines():
             line = line.strip()
             if line.startswith("#EXTINF"):
+                tvg_id = re.search(r'tvg-id="([^"]*)"', line)
+                tvg_name = re.search(r'tvg-name="([^"]*)"', line)
+                name = line.split(',')[-1].strip() if ',' in line else None
+                
                 channel = {
-                    'tvg-id': (re.search(r'tvg-id="([^"]*)"', line).group(1) 
-                              if 'tvg-id=' in line else None,
-                    'tvg-name': (re.search(r'tvg-name="([^"]*)"', line).group(1) 
-                               if 'tvg-name=' in line else None,
-                    'name': line.split(',')[-1].strip() if ',' in line else None,
-                    'original_tvg-id': None
+                    'tvg-id': tvg_id.group(1) if tvg_id else None,
+                    'tvg-name': tvg_name.group(1) if tvg_name else None,
+                    'name': name,
+                    'original_tvg-id': tvg_id.group(1) if tvg_id else None
                 }
-                if channel['tvg-id']:
-                    channel['original_tvg-id'] = channel['tvg-id']
                 channels.append(channel)
         return channels
     except Exception as e:
