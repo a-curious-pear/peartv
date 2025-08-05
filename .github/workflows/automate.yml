@@ -46,7 +46,7 @@ jobs:
         # 'python gen.py' will find and execute your script correctly.
         run: python gen.py
 
-      - name: Commit and push the generated 'peartv.m3u' file
+      - name: Commit and push the generated 'playlist.m3u' file
         # These Git commands run after your Python script has created 'peartv.m3u'.
         # They will add the new file, commit it, and push it back to your GitHub repo.
         run: |
@@ -61,6 +61,6 @@ jobs:
           if git diff-index --quiet HEAD; then
             echo "No changes to commit. Skipping commit and push."
           else
-            git commit -m "Automated update of peartv.m3u"
+            git commit -m "Automated update of playlist.m3u"
             git push
           fi
